@@ -1,0 +1,47 @@
+/* Efekty wizualne, filtry i przejścia */
+
+.transition {
+  transition: all 150ms ease; /* płynna zmiana wszystkich właściwości */
+}
+
+.shadow-hover {
+  transition: box-shadow 180ms ease, transform 120ms ease; /* płynna zmiana cienia i pozycji */
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18); /* mocniejszy cień w hover */
+  transform: translateY(-2px); /* lekkie uniesienie */
+}
+
+.blur-sm { filter: blur(2px); } /* lekki blur */
+.blur-none { filter: none; } /* brak blur */
+
+.grayscale { filter: grayscale(100%); } /* odcienie szarości */
+.grayscale-0 { filter: grayscale(0%); } /* brak szarości */
+
+.dim { opacity: 0.7; } /* przygaszenie */
+.dim:hover { opacity: 1; } /* pełna widoczność w hover */
+
+.rotate-3 { transform: rotate(3deg); } /* lekki obrót */
+.scale-105 { transform: scale(1.05); } /* lekkie powiększenie */
+
+/* Skeleton loading */
+.skeleton {
+  position: relative; /* kontekst dla pseudo-elementu */
+  overflow: hidden; /* ukrycie animacji poza elementem */
+  background: linear-gradient(90deg, #e2e8f0 25%, #f8fafc 50%, #e2e8f0 75%); /* gradient tła */
+  background-size: 200% 100%; /* większy gradient do przesuwania */
+  animation: shimmer 1.4s ease infinite; /* animacja przesuwu */
+}
+
+@keyframes shimmer { /* definicja animacji skeleton */
+  0% { background-position: 200% 0; } /* start poza widokiem */
+  100% { background-position: -200% 0; } /* przesunięcie w lewo */
+}
+
+/* ---
+Dlaczego tak:
+- Klasy transition/shadow-hover dają gotowe efekty hover z lekkim ruchem i cieniem bez powtarzania deklaracji.
+- Filtry (blur, grayscale, dim) oraz transformacje rotate/scale to proste utility do szybkich efektów na elementach.
+- Skeleton używa animowanego gradientu (shimmer) i background-size 200% dla płynnego przesuwu, co jest typowym wzorcem preload.
+- Oddzielne klasy umożliwiają kompozycję efektów zamiast pisania unikalnych reguł dla każdego komponentu. */

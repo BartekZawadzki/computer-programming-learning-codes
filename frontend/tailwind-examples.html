@@ -1,0 +1,73 @@
+<!-- Tailwind CSS przykłady z komentarzami: layout, utility classes, responsywność. -->
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CDN Tailwind (prod) – do realnych projektów preferuj build z tailwind.config.js -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Tailwind przykłady</title>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="bg-slate-900 text-white">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
+      <span class="font-semibold text-lg">MojaApp</span>
+      <nav class="hidden md:flex gap-4 text-sm">
+        <a class="hover:text-sky-200" href="#">Home</a>
+        <a class="hover:text-sky-200" href="#">Funkcje</a>
+        <a class="hover:text-sky-200" href="#">Kontakt</a>
+      </nav>
+      <button class="md:hidden px-3 py-2 border border-white/50 rounded">Menu</button>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Karty w responsywnej siatce -->
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <article class="rounded-xl bg-white shadow-md p-4 flex flex-col gap-3">
+        <h3 class="text-lg font-semibold">Karta 1</h3>
+        <p class="text-sm text-slate-600">Opis funkcji lub sekcji.</p>
+        <div class="mt-auto flex gap-2">
+          <button class="px-3 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">Akcja</button>
+          <button class="px-3 py-2 border border-slate-200 rounded hover:bg-slate-50">Więcej</button>
+        </div>
+      </article>
+      <article class="rounded-xl bg-white shadow-md p-4 flex flex-col gap-3">
+        <h3 class="text-lg font-semibold">Karta 2</h3>
+        <p class="text-sm text-slate-600">Opis funkcji lub sekcji.</p>
+        <span class="inline-flex items-center gap-2 text-xs text-amber-600 bg-amber-50 border border-amber-100 px-2 py-1 rounded-full">Nowość</span>
+      </article>
+      <article class="rounded-xl bg-white shadow-md p-4 flex flex-col gap-3">
+        <h3 class="text-lg font-semibold">Karta 3</h3>
+        <p class="text-sm text-slate-600">Opis funkcji lub sekcji.</p>
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <span class="w-3 h-3 rounded-full bg-emerald-500"></span> Aktywny
+        </div>
+      </article>
+    </div>
+
+    <!-- Formularz z klasami Tailwind -->
+    <form class="mt-6 space-y-4">
+      <div class="space-y-1">
+        <label class="block text-sm font-medium">Email</label>
+        <input type="email" class="w-full rounded border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="you@example.com">
+      </div>
+      <div class="space-y-1">
+        <label class="block text-sm font-medium">Hasło</label>
+        <input type="password" class="w-full rounded border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="******">
+      </div>
+      <div class="flex items-center gap-2">
+        <input id="remember" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500">
+        <label for="remember" class="text-sm">Zapamiętaj mnie</label>
+      </div>
+      <button type="submit" class="px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">Zaloguj</button>
+    </form>
+  </main>
+</body>
+</html>
+
+<!-- ---
+Dlaczego tak:
+- CDN pozwala szybko podejrzeć utility w statycznym HTML; w produkcji lepiej użyć builda z purge.
+- Layout header + grid + form pokazuje najczęstsze utility (flex, grid, spacing, colors, focus states).
+- Responsywne klasy (sm:, md:, lg:) demonstrują jak Tailwind skaluje UI na różnych ekranach. -->

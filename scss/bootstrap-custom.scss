@@ -1,0 +1,23 @@
+// Bootstrap 5 SCSS – przykład nadpisania zmiennych i importu komponentów.
+// Wymaga instalacji bootstrap jako dependency i kompilacji SCSS (np. sass).
+
+// Nadpisz zmienne PRZED importem głównym
+$primary: #2563eb;             // własny kolor primary
+$border-radius: 0.5rem;        // większe zaokrąglenie
+$enable-shadows: true;         // włącz cienie
+
+// Import core + komponenty (możesz importować selektywnie)
+@import "bootstrap/scss/bootstrap";
+
+// Custom style po imporcie
+.btn-brand {
+  @extend .btn;
+  @extend .btn-primary;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.2);  // dodatkowy cień
+}
+
+// ---
+// Dlaczego tak:
+// - Nadpisywanie zmiennych przed importem pozwala zmienić motyw bez kopiowania kodu Bootstrapa.
+// - Import całego bootstrap/scss daje komplet komponentów; można zawęzić do potrzebnych modułów.
+// - Przykładowa klasa btn-brand pokazuje, jak rozszerzyć istniejące style i dodać własne akcenty.

@@ -1,0 +1,81 @@
+<!DOCTYPE html> <!-- Deklaracja dokumentu -->
+<html lang="pl"> <!-- Ustawienie języka -->
+  <head> <!-- Metadane dokumentu -->
+    <meta charset="UTF-8" /> <!-- Kodowanie znaków -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsywność -->
+    <title>Layout: Flex i Grid</title> <!-- Tytuł strony -->
+    <style> /* Wbudowane style demonstracyjne */
+      :root { /* Zmienne CSS */
+        --gap: 12px; /* odstęp bazowy */
+        --bg: #f6f8fa; /* tło kontenera */
+      }
+      body { margin: 0; font-family: Arial, sans-serif; background: #fff; } /* reset marginesu, font */
+      .container { display: flex; gap: var(--gap); padding: 16px; background: var(--bg); } /* flex-kontener z odstępem */
+      .sidebar { flex: 0 0 200px; background: #dde6f7; padding: 12px; } /* boczny panel stałej szerokości */
+      .content { flex: 1; background: #eef2f7; padding: 12px; } /* główna kolumna wypełnia przestrzeń */
+
+      .cards { /* sekcja kart w gridzie */
+        display: grid; /* aktywacja grid */
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* responsywne kolumny */
+        gap: var(--gap); /* odstęp między kartami */
+        margin-top: 12px; /* odstęp od góry */
+      }
+      .card { background: #fff; border: 1px solid #d0d7de; padding: 12px; border-radius: 6px; } /* styl pojedynczej karty */
+      .card h3 { margin: 0 0 8px 0; font-size: 16px; } /* nagłówek karty */
+      .card p { margin: 0; font-size: 14px; } /* treść karty */
+    </style>
+  </head>
+  <body> <!-- Widoczna część strony -->
+    <div class="container"> <!-- Flex: wiersz z sidebar + content -->
+      <aside class="sidebar"> <!-- Kolumna boczna -->
+        <h2>Nawigacja</h2> <!-- Nagłówek boczny -->
+        <ul> <!-- Lista linków -->
+          <li><a href="#grid">Karty (Grid)</a></li> <!-- Link do sekcji grid -->
+          <li><a href="#info">Info</a></li> <!-- Link do sekcji info -->
+        </ul>
+      </aside>
+      <main class="content"> <!-- Główna zawartość -->
+        <h1>Flex + Grid</h1> <!-- Tytuł strony -->
+        <p>Przykład layoutu: flex dla głównego układu, grid dla kart.</p> <!-- Opis -->
+
+        <section id="grid"> <!-- Sekcja kart -->
+          <h2>Karty w gridzie</h2> <!-- Nagłówek sekcji -->
+          <div class="cards"> <!-- Kontener grid -->
+            <article class="card"> <!-- Karta -->
+              <h3>Karta 1</h3> <!-- Tytuł karty -->
+              <p>Treść karty pierwszej.</p> <!-- Opis karty -->
+            </article>
+            <article class="card">
+              <h3>Karta 2</h3>
+              <p>Treść karty drugiej.</p>
+            </article>
+            <article class="card">
+              <h3>Karta 3</h3>
+              <p>Treść karty trzeciej.</p>
+            </article>
+            <article class="card">
+              <h3>Karta 4</h3>
+              <p>Treść karty czwartej.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="info"> <!-- Sekcja informacyjna -->
+          <h2>Dlaczego tak?</h2> <!-- Nagłówek sekcji -->
+          <ul> <!-- Lista powodów -->
+            <li>Flex: prosty układ kolumnowy.</li> <!-- Powód 1 -->
+            <li>Grid: kontrola nad kartami i responsywność.</li> <!-- Powód 2 -->
+            <li>Zmienne CSS: łatwe modyfikowanie odstępów/kolorów.</li> <!-- Powód 3 -->
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
+
+<!-- ---
+Dlaczego tak:
+- Flex na kontenerze dzieli stronę na sidebar i content, co jest prostym dwukolumnowym layoutem.
+- Grid w sekcji kart z auto-fit/minmax zapewnia responsywne kolumny bez media queries.
+- Zmienne CSS (--gap, --bg) ułatwiają szybkie dostosowanie odstępów i kolorów w jednym miejscu.
+- Wbudowane style w <style> utrzymują przykład samoopisowy bez dodatkowych plików. -->

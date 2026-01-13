@@ -1,0 +1,33 @@
+# Przykładowy ~/.gitconfig (NIE commituj z realnymi danymi) – komentarze co robią ustawienia.
+[user]
+    name = YOUR_NAME                 # Twoje imię i nazwisko
+    email = YOUR_EMAIL               # Twój email (używany w commitach)
+
+[core]
+    autocrlf = input                 # konwersja CRLF -> LF przy commit; zostawia LF (unix)
+    editor = code --wait             # domyślny edytor (tu VS Code)
+
+[pull]
+    rebase = false                   # pull = fetch + merge (domyślnie)
+
+[init]
+    defaultBranch = main             # nowy repo startuje z main
+
+[alias]
+    st = status                      # git st
+    co = checkout                    # git co branch
+    br = branch                      # git br
+    cm = commit -m                   # git cm "msg"
+    lg = log --oneline --graph --decorate --all   # ładny log
+
+[merge]
+    ff = only                        # zezwalaj tylko na fast-forward (opcjonalnie)
+
+[color]
+    ui = auto                        # koloruj output jeśli terminal wspiera
+
+# ---
+# Dlaczego tak:
+# - Przykład pokazuje kluczowe ustawienia (user, autocrlf, editor) bez wprowadzania realnych danych.
+# - Alias y skracają codzienne polecenia; defaultBranch=main ujednolica nowe repo.
+# - rebase=false przy pull to bezpieczny domyślny merge; można zmienić wg zespołowej polityki.

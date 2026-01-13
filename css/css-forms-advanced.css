@@ -1,0 +1,93 @@
+/* Stylowanie formularzy i stanów */
+
+form {
+  display: grid; /* układ siatki */
+  gap: 12px; /* odstęp między polami */
+  max-width: 520px; /* szerokość maksymalna formularza */
+}
+
+label {
+  font-weight: 600; /* wyróżnienie etykiety */
+  display: block; /* blok dla układu w kolumnie */
+  margin-bottom: 4px; /* mały odstęp pod etykietą */
+}
+
+.field {
+  display: flex; /* flex do układania label + input (opcjonalnie) */
+  flex-direction: column; /* kolumna */
+  gap: 4px; /* mała przerwa */
+}
+
+input,
+select,
+textarea {
+  padding: 10px 12px; /* wewnętrzny odstęp */
+  border: 1px solid #cbd5e1; /* ramka */
+  border-radius: 6px; /* zaokrąglenie */
+  background: #fff; /* tło */
+  color: #0f172a; /* tekst */
+  transition: border-color 0.15s ease, box-shadow 0.15s ease; /* płynna zmiana */
+  font-family: inherit; /* dziedziczenie fontu */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none; /* usuwa domyślny outline */
+  border-color: #0d6efd; /* kolor obramowania w focus */
+  box-shadow: 0 0 0 3px #0d6efd33; /* ring focus */
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: #f1f5f9; /* przygaszone tło */
+  color: #94a3b8; /* jaśniejszy tekst */
+  cursor: not-allowed; /* kursor zakaz */
+}
+
+.error {
+  border-color: #ef4444; /* czerwone obramowanie błędu */
+  box-shadow: 0 0 0 3px #ef444433; /* ring błędu */
+}
+
+.help {
+  font-size: 14px; /* mniejszy tekst pomocy */
+  color: #64748b; /* przygaszony kolor */
+}
+
+.error-text {
+  color: #ef4444; /* czerwony tekst błędu */
+  font-size: 14px; /* mniejszy rozmiar */
+}
+
+.checkbox-inline {
+  display: inline-flex; /* etykieta + checkbox inline */
+  align-items: center; /* wyśrodkowanie pionowe */
+  gap: 6px; /* przerwa między checkboxem a tekstem */
+}
+
+.btn-submit {
+  background: #0d6efd; /* tło */
+  color: #fff; /* tekst */
+  border: none; /* brak ramki */
+  padding: 10px 14px; /* odstęp */
+  border-radius: 8px; /* zaokrąglenie */
+  cursor: pointer; /* kursor */
+  font-weight: 600; /* waga czcionki */
+}
+
+.btn-submit:hover {
+  background: #0b5ed7; /* ciemniejszy hover */
+}
+
+.btn-submit:active {
+  transform: translateY(1px); /* wciśnięcie */
+}
+
+/* ---
+Dlaczego tak:
+- Grid w formie i .field z flex kolumną nadają spójny układ label+input.
+- Focus ring/kolor obramowania poprawia dostępność, a disabled style komunikują nieaktywność.
+- Klasy .error/.error-text pozwalają jednolicie wyróżniać błędy walidacji.
+- Przyciski z hover/active i border-radius zwiększają czytelność interakcji; dziedziczenie fontu utrzymuje spójność typografii. */

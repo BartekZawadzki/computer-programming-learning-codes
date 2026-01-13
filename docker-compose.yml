@@ -1,0 +1,48 @@
+# docker-compose: frontend, backend, database (PostgreSQL) z komentarzami.
+version: "3.9"  # wersja pliku compose
+
+services:
+  frontend:
+    build:
+      context: .                          # katalog projektu
+      dockerfile: Dockerfile              # użyj głównego Dockerfile (np. front)
+    image: myapp-frontend:latest          # nazwa obrazu
+    environment:
+      - NODE_ENV=production               # tryb produkcyjny
+    ports:
+      - "3000:3000"                       # mapowanie portów host:container
+    depends_on:
+      - backend                           # frontend czeka na backend
+
+  backend:
+    build:
+      context: .                          # ten sam kontekst; w praktyce osobny Dockerfile back
+      dockerfile: Dockerfile              # placeholder – można wskazać inny plik
+    image: myapp-backend:latest           # nazwa obrazu
+    environment:
+      - NODE_ENV=production               # zmienne środowiskowe
+      - DATABASE_URL=postgres://app:secret@db:5432/app  # connection string do DB
+    ports:
+      - "4000:4000"                       # API port
+    depends_on:
+      - db                                # zależność od bazy
+
+  db:
+    image: postgres:15-alpine             # oficjalny obraz Postgresa
+    environment:
+      - POSTGRES_USER=app                 # użytkownik
+      - POSTGRES_PASSWORD=secret          # hasło
+      - POSTGRES_DB=app                   # baza
+    ports:
+      - "5432:5432"                       # ekspozycja portu DB
+    volumes:
+      - db_data:/var/lib/postgresql/data  # trwały wolumen danych
+
+volumes:
+  db_data:                                # definicja named volume
+
+# ---
+# Dlaczego tak:
+# - Oddzielenie frontend/backend/db odzwierciedla typowy stack; depends_on ustala kolejność startu.
+# - Zmienne środowiskowe dla backendu (DATABASE_URL) ułatwiają spójne łączenie z bazą w sieci compose.
+# - Named volume dla Postgresa zapewnia trwałość danych między restartami kontenerów.

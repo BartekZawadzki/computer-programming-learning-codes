@@ -1,0 +1,28 @@
+# Ogólny .gitignore z komentarzami (Node/JS/TS + ogólne artefakty).
+node_modules/                 # zależności npm/yarn
+dist/                         # build front/back
+build/                        # build alternatywny
+.next/                        # Next.js output
+.nuxt/                        # Nuxt output
+.turbo/                       # Turbo repo cache
+coverage/                     # raporty testów
+*.log                         # logi
+npm-debug.log*                # debug npm
+pnpm-debug.log*               # debug pnpm
+yarn-debug.log*               # debug yarn
+.env                          # sekrety (nie commituj)
+.env.local                    # sekrety lokalne
+.env.*.local                  # sekrety per środowisko
+.DS_Store                     # artefakt macOS
+*.swp                         # swap edytora
+*.tmp                         # pliki tymczasowe
+.idea/                        # konfiguracja IDE (IntelliJ)
+.vscode/                      # konfiguracja VS Code (opcjonalnie ignorowana)
+tmp/                          # katalog tymczasowy
+logs/                         # katalog logów
+
+# ---
+# Dlaczego tak:
+# - Lista obejmuje najczęstsze artefakty JS/TS (node_modules, build, logi, .env).
+# - Ignorowanie plików IDE i temp utrzymuje repo czyste i przenośne.
+# - .env wyklucza sekrety i konfigurację lokalną z repozytorium.

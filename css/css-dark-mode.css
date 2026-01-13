@@ -1,0 +1,63 @@
+/* Dark mode przy pomocy preferencji systemowej i klasy .dark */
+
+:root {
+  --bg: #f8fafc; /* tło jasne */
+  --text: #0f172a; /* tekst jasny tryb */
+  --card: #ffffff; /* karta jasna */
+  --border: #e2e8f0; /* ramka jasna */
+  --primary: #0d6efd; /* kolor główny */
+}
+
+/* Tryb dark aktywowany klasą .dark na html/body */
+.dark {
+  --bg: #0b1221; /* ciemne tło */
+  --text: #e2e8f0; /* jasny tekst */
+  --card: #121a2c; /* ciemna karta */
+  --border: #1f2937; /* ciemna ramka */
+  --primary: #4f8bff; /* jaśniejszy akcent w dark */
+}
+
+/* Automatyczny dark na podstawie preferencji OS */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1221;
+    --text: #e2e8f0;
+    --card: #121a2c;
+    --border: #1f2937;
+    --primary: #4f8bff;
+  }
+}
+
+body {
+  margin: 0; /* reset */
+  background: var(--bg); /* tło zależne od trybu */
+  color: var(--text); /* kolor tekstu zależny od trybu */
+  font-family: "Inter", Arial, sans-serif; /* font bazowy */
+}
+
+.panel {
+  background: var(--card); /* tło panelu */
+  border: 1px solid var(--border); /* ramka panelu */
+  border-radius: 8px; /* zaokrąglenie */
+  padding: 16px; /* odstęp */
+}
+
+a {
+  color: var(--primary); /* link w kolorze akcentu */
+}
+
+.btn-dark-toggle {
+  background: var(--primary); /* tło przycisku */
+  color: #fff; /* tekst */
+  border: none; /* brak ramki */
+  padding: 10px 14px; /* odstęp */
+  border-radius: 8px; /* zaokrąglenie */
+  cursor: pointer; /* kursor */
+}
+
+/* ---
+Dlaczego tak:
+- Zmienne kolorów w :root/.dark umożliwiają szybkie przełączanie motywu bez duplikacji reguł.
+- prefers-color-scheme daje automatyczne dopasowanie do systemu; klasa .dark pozwala na ręczne sterowanie.
+- Użycie var(--bg/text/card/border/primary) w body/panel/linkach sprawia, że wszystkie elementy dziedziczą motyw.
+- Przycisk toggle korzysta z primary, więc zmienia się spójnie z motywem. */

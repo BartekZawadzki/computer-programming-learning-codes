@@ -1,0 +1,44 @@
+/* Skala typografii i klasy użytkowe */
+
+:root {
+  --font-base: 16px; /* bazowy rozmiar fontu */
+  --font-scale: 1.125; /* modular scale (np. 16 * 1.125) */
+  --line-base: 1.6; /* bazowy line-height */
+}
+
+body {
+  margin: 0; /* reset marginesu */
+  font-family: "Inter", Arial, sans-serif; /* rodzina fontów */
+  font-size: var(--font-base); /* rozmiar bazowy */
+  line-height: var(--line-base); /* wysokość linii */
+  color: #0f172a; /* kolor tekstu */
+}
+
+.h1 { font-size: calc(var(--font-base) * 2.441); font-weight: 700; } /* duży nagłówek */
+.h2 { font-size: calc(var(--font-base) * 1.953); font-weight: 700; } /* średni nagłówek */
+.h3 { font-size: calc(var(--font-base) * 1.563); font-weight: 600; } /* mniejszy nagłówek */
+.h4 { font-size: calc(var(--font-base) * 1.25); font-weight: 600; } /* podnagłówek */
+.body { font-size: var(--font-base); } /* tekst bazowy */
+.body-sm { font-size: calc(var(--font-base) * 0.875); } /* mniejszy tekst */
+.code { font-family: "SFMono-Regular", Consolas, monospace; } /* monospaced */
+
+.lead {
+  font-size: calc(var(--font-base) * 1.25); /* większy tekst wstępu */
+  color: #1f2937; /* ciemniejszy kolor */
+}
+
+.muted {
+  color: #64748b; /* przygaszony tekst */
+}
+
+.uppercase { text-transform: uppercase; } /* duże litery */
+.capitalize { text-transform: capitalize; } /* kapitalizacja */
+.center { text-align: center; } /* wyrównanie do środka */
+.right { text-align: right; } /* wyrównanie do prawej */
+
+/* ---
+Dlaczego tak:
+- Modular scale (font-base * 1.125^n) daje spójną hierarchię nagłówków bez losowych wartości.
+- Klasy pomocnicze (muted/uppercase/capitalize/align) pozwalają szybko dostosować typografię w markupie.
+- Bazowy line-height/kolor w body zapewnia czytelność, a lead podkreśla wstęp/intro.
+- Oddzielny font monospace dla .code ułatwia wyróżnienie fragmentów kodu. */

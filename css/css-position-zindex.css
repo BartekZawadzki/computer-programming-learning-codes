@@ -1,0 +1,46 @@
+/* Pozycjonowanie i warstwy (z-index) */
+
+.relative { position: relative; } /* kontekst pozycjonowania */
+.absolute { position: absolute; } /* pozycja absolutna */
+.fixed { position: fixed; } /* stała pozycja względem okna */
+.sticky { position: sticky; } /* przyklejony element */
+
+.top-0 { top: 0; } /* wyrównanie do góry */
+.right-0 { right: 0; } /* wyrównanie do prawej */
+.bottom-0 { bottom: 0; } /* wyrównanie do dołu */
+.left-0 { left: 0; } /* wyrównanie do lewej */
+
+.z-0 { z-index: 0; } /* warstwa 0 */
+.z-10 { z-index: 10; } /* warstwa 10 */
+.z-20 { z-index: 20; } /* warstwa 20 */
+.z-50 { z-index: 50; } /* warstwa 50 (np. modal) */
+
+/* Overlay (ciemne tło pod modalem) */
+.overlay {
+  position: fixed; /* stała pozycja */
+  inset: 0; /* skrót: top/right/bottom/left = 0 */
+  background: rgba(15, 23, 42, 0.55); /* półprzezroczyste tło */
+  backdrop-filter: blur(2px); /* lekki blur tła */
+}
+
+/* Modal */
+.modal {
+  position: fixed; /* stałe względem okna */
+  top: 50%; left: 50%; /* centrum ekranu */
+  transform: translate(-50%, -50%); /* przesunięcie do środka */
+  background: #fff; /* tło */
+  color: #0f172a; /* tekst */
+  border-radius: 12px; /* zaokrąglenie */
+  padding: 20px; /* odstęp wewnętrzny */
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2); /* cień */
+  max-width: 480px; /* szerokość maksymalna */
+  width: calc(100% - 32px); /* responsywna szerokość */
+  z-index: 60; /* nad overlay */
+}
+
+/* ---
+Dlaczego tak:
+- Utility klasy position/top/right/.../z-index ułatwiają szybkie pozycjonowanie elementów bez pisania nowych reguł.
+- Overlay + modal pokazują typowy wzorzec warstw: tło z blur + okno z wyższym z-indexem i centrowaniem transform.
+- inset:0 skraca zapis pełnego rozciągnięcia overlaya, a width calc + max-width zapewniają responsywną szerokość modala.
+- Zdefiniowane poziomy z-index (0/10/20/50/60) tworzą prostą skalę do kontrolowania warstw UI. */

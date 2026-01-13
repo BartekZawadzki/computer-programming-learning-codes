@@ -1,0 +1,51 @@
+@import "./scss-tokens.scss"; // zmienne bazowe
+
+// Kolory i tła
+.bg-primary { background: $color-primary; } // tło główne
+.bg-light { background: lighten($color-bg, 4%); } // jaśniejsze tło
+.bg-dark { background: #0f172a; color: #fff; } // ciemne tło + jasny tekst
+.text-primary { color: $color-primary; } // kolor tekstu głównego
+.text-muted { color: $color-muted; } // przygaszony tekst
+
+// Ramki i promienie
+.border { border: 1px solid $color-border; } // cienka ramka
+.rounded { border-radius: $radius-md; } // średnie zaokrąglenie
+.rounded-full { border-radius: $radius-full; } // pełne zaokrąglenie
+
+// Przyciski (utility)
+.btn {
+  @include button-base; // bazowy mixin przycisku
+}
+.btn-primary {
+  @extend .btn; // dziedziczy bazę
+  background: $color-primary; color: #fff; // tło i tekst
+  &:hover { background: $color-primary-dark; } // ciemniejszy w hover
+}
+.btn-outline {
+  @extend .btn; // bazowy styl
+  background: transparent; // brak tła
+  color: $color-primary; // tekst w kolorze głównym
+  border-color: $color-primary; // ramka w kolorze głównym
+}
+.btn:active { transform: translateY(1px); } // wciśnięcie przycisku
+
+// Formularze
+.input {
+  width: 100%; // pełna szerokość
+  padding: 10px 12px; // odstęp
+  border: 1px solid $color-border; // ramka
+  border-radius: $radius-sm; // zaokrąglenie
+  background: #fff; // tło
+  color: $color-text; // tekst
+  transition: border-color 0.15s ease, box-shadow 0.15s ease; // płynne zmiany
+  &:focus { // stan focus
+    @include focus-ring(); // ring focus
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.2); // dodatkowy ring
+  }
+}
+
+// Cienie i prześwity
+.shadow-sm { box-shadow: $shadow-sm; } // lekki cień
+.shadow-md { box-shadow: $shadow-md; } // średni cień
+.opacity-70 { opacity: 0.7; } // przygaszenie
+.opacity-100 { opacity: 1; } // pełna widoczność

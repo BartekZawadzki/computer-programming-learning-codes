@@ -1,0 +1,44 @@
+@import "./scss-tokens.scss"; // importuje zmienne bazowe
+
+// Mixin dla responsywności: breakpointy
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: 768px) { @content; } // reguły dla tabletów
+  } @else if $breakpoint == phone {
+    @media (max-width: 480px) { @content; } // reguły dla telefonów
+  }
+}
+
+// Mixin dla cienia z wyborem intensywności
+@mixin shadow($level: sm) {
+  @if $level == sm { box-shadow: $shadow-sm; } // cień lekki
+  @else if $level == md { box-shadow: $shadow-md; } // cień średni
+  @else if $level == lg { box-shadow: $shadow-lg; } // cień mocny
+}
+
+// Mixin dla przycisku bazowego
+@mixin button-base {
+  display: inline-flex; // wyrównanie treści
+  align-items: center; // środek pionowy
+  justify-content: center; // środek poziomy
+  gap: $space-1; // odstęp np. ikona-tekst
+  padding: 10px 14px; // wypełnienie
+  border-radius: $radius-md; // zaokrąglenie
+  border: 1px solid transparent; // bazowa ramka
+  font-weight: 600; // waga czcionki
+  cursor: pointer; // kursor ręki
+  transition: background 0.2s ease, transform 0.1s ease; // płynne zmiany
+}
+
+// Mixin dla focus ring
+@mixin focus-ring($color: $color-primary) {
+  outline: 2px solid rgba($color-primary, 0.2); // obrys
+  border-color: $color; // kolor ramki
+}
+
+// ---
+// Dlaczego tak:
+// - respond kapsułkuje media queries dla tablet/phone, by nie powielać wartości breakpointów w kodzie.
+// - shadow przyjmuje poziom (sm/md/lg), dzięki czemu komponenty korzystają z jednej definicji cieni bazujących na tokenach.
+// - button-base zapewnia spójne podstawowe cechy przycisków (flex align, padding, radius, transition) w całym projekcie.
+// - focus-ring dodaje czytelny outline/border-color, poprawiając dostępność i ujednolicając wygląd focus na komponentach. 

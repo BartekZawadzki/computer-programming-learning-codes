@@ -1,0 +1,24 @@
+<!-- Szablon root component Angular z komentarzami. -->
+<main class="container">
+  <h1>{{ title }}</h1>
+  <p>Przykład pobrania danych z serwisu i wyświetlenia listy.</p>
+
+  <button (click)="fetchUsers()" [disabled]="loading">
+    {{ loading ? 'Ładowanie...' : 'Odśwież' }}
+  </button>
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <ul>
+    <li *ngFor="let user of users">
+      <strong>{{ user.name }}</strong> – {{ user.email }}
+    </li>
+  </ul>
+
+  <p *ngIf="!loading && users.length === 0">Brak użytkowników.</p>
+</main>
+
+<!-- ---
+Dlaczego tak:
+- Szablon używa prostych dyrektyw Angulara (*ngIf, *ngFor) do warunków i listy.
+- Oddzielony przycisk Odśwież opiera się na metodzie fetchUsers, co scala UI z logiką.
+- Minimalne elementy (button, ul/li) pokazują binding danych bez dodatkowych bibliotek UI. -->

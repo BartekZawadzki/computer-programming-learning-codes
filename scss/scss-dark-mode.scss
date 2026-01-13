@@ -1,0 +1,55 @@
+@import "./scss-tokens.scss"; // bazowe zmienne
+
+// Mapy tematów light/dark (SCSS map)
+$theme-light: (
+  bg: #f8fafc,
+  text: #0f172a,
+  card: #ffffff,
+  border: #e2e8f0,
+  primary: #0d6efd,
+);
+
+$theme-dark: (
+  bg: #0b1221,
+  text: #e2e8f0,
+  card: #121a2c,
+  border: #1f2937,
+  primary: #4f8bff,
+);
+
+// Mixin, który aplikuje mapę zmiennych do :root lub klasy .dark
+@mixin apply-theme($theme) {
+  --bg: map-get($theme, bg); // tło
+  --text: map-get($theme, text); // tekst
+  --card: map-get($theme, card); // karty
+  --border: map-get($theme, border); // ramki
+  --primary: map-get($theme, primary); // akcent
+}
+
+:root {
+  @include apply-theme($theme-light); // domyślnie light
+}
+
+.dark {
+  @include apply-theme($theme-dark); // ciemny motyw po dodaniu klasy .dark
+}
+
+// Użycie CSS custom properties w komponentach
+.panel-theme {
+  background: var(--card); // tło z tematu
+  color: var(--text); // tekst z tematu
+  border: 1px solid var(--border); // ramka z tematu
+  border-radius: $radius-md; // SCSS zmienna
+  padding: $space-4; // odstęp z tokenów
+}
+
+a.theme-link {
+  color: var(--primary); // link w kolorze akcentu tematu
+}
+
+// ---
+// Dlaczego tak:
+// - Mapy $theme-light/$theme-dark przechowują palety, a mixin apply-theme przenosi je do CSS custom properties.
+// - :root ma domyślnie temat jasny, a klasa .dark przełącza wartości bez duplikacji stylów komponentów.
+// - Komponenty (panel-theme, theme-link) korzystają z var(--...), więc reagują na zmianę motywu w jednym miejscu.
+// - Połączenie zmiennych SCSS (radius/spacing) z CSS vars daje elastyczność: build-time tokeny + runtime theming. 

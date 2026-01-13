@@ -1,0 +1,23 @@
+/* Style komponentu root (przykładowe) */
+main {
+  max-width: 720px;
+  margin: 24px auto;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  margin: 8px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.error {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+/* ---
+Dlaczego tak:
+- Prosty layout (max-width, margin auto) utrzymuje fokus na logice Angulara, nie stylach.
+- Styl przycisku i klasy .error pozwala szybko rozróżnić stany UI (błąd vs dane).
+- Scope pliku CSS do komponentu root ogranicza przecieki styli do reszty aplikacji. */

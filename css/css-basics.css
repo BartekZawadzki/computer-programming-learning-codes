@@ -1,0 +1,58 @@
+/* Reset i baza typografii */
+* { box-sizing: border-box; } /* uwzględnia padding/border w width/height */
+body {
+  margin: 0; /* usuwa domyślne marginesy */
+  font-family: "Inter", Arial, sans-serif; /* rodzina fontów */
+  line-height: 1.5; /* wysokość linii dla czytelności */
+  color: #0f172a; /* kolor tekstu */
+  background: #f8fafc; /* tło strony */
+}
+
+a {
+  color: #0d6efd; /* kolor linków */
+  text-decoration: none; /* bez podkreślenia */
+}
+
+a:hover {
+  text-decoration: underline; /* podkreślenie w hover */
+}
+
+p {
+  margin: 0 0 12px 0; /* odstęp pod akapitem */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 12px 0; /* spójny odstęp pod nagłówkami */
+  font-weight: 600; /* waga czcionki */
+  color: #0b132b; /* kolor nagłówków */
+}
+
+img {
+  max-width: 100%; /* obraz nie wyjdzie poza kontener */
+  height: auto; /* zachowuje proporcje */
+  display: block; /* usuwa dolny whitespace inline */
+}
+
+ul {
+  padding-left: 20px; /* wcięcie listy */
+  margin: 0 0 12px 0; /* odstęp pod listą */
+}
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; /* font monospace */
+  background: #e2e8f0; /* jasne tło kodu */
+  padding: 2px 4px; /* mały padding */
+  border-radius: 4px; /* zaokrąglenie */
+}
+
+/* ---
+Dlaczego tak:
+- Reset box-sizing i marginesów buduje przewidywalne layouty; font/line-height tworzą czytelną bazę.
+- Linki z hover underline są czytelne, ale domyślnie bez podkreślenia dla prostoty.
+- Obrazy mają max-width:100%/height:auto, by nie wypychać kontenerów i zachować proporcje.
+- Spójne marginesy nagłówków/list/akapitów dają przewidywalny rytm pionowy; code ma monospace i tło dla kontrastu. */

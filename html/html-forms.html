@@ -1,0 +1,78 @@
+<!DOCTYPE html> <!-- Deklaracja typu dokumentu -->
+<html lang="pl"> <!-- Język dokumentu ustawiony na polski -->
+  <head> <!-- Nagłówek z metadanymi -->
+    <meta charset="UTF-8" /> <!-- Kodowanie znaków -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsywność -->
+    <title>Formularze HTML</title> <!-- Tytuł strony -->
+  </head>
+  <body> <!-- Treść strony -->
+    <main> <!-- Główna zawartość -->
+      <h1>Formularze</h1> <!-- Nagłówek strony -->
+      <form action="/submit" method="post"> <!-- Formularz z metodą POST -->
+        <fieldset> <!-- Grupa pól powiązanych tematycznie -->
+          <legend>Dane użytkownika</legend> <!-- Tytuł grupy pól -->
+
+          <label for="name">Imię i nazwisko</label> <!-- Etykieta powiązana z polem -->
+          <input id="name" name="name" type="text" required /> <!-- Pole tekstowe, wymagane -->
+
+          <label for="email">Email</label> <!-- Etykieta dla email -->
+          <input id="email" name="email" type="email" required /> <!-- Pole email z walidacją -->
+
+          <label for="age">Wiek</label> <!-- Etykieta dla liczby -->
+          <input id="age" name="age" type="number" min="0" max="120" /> <!-- Liczba z zakresem -->
+
+          <label for="role">Rola</label> <!-- Etykieta selecta -->
+          <select id="role" name="role"> <!-- Lista rozwijana -->
+            <option value="">-- wybierz --</option> <!-- Opcja domyślna -->
+            <option value="dev">Developer</option> <!-- Opcja developer -->
+            <option value="qa">QA</option> <!-- Opcja QA -->
+            <option value="pm">PM</option> <!-- Opcja PM -->
+          </select>
+
+          <fieldset> <!-- Zagnieżdżona grupa dla wyboru płci -->
+            <legend>Płeć</legend> <!-- Tytuł grupy radiobuttonów -->
+            <label>
+              <input type="radio" name="gender" value="female" /> <!-- Radio dla female -->
+              Kobieta
+            </label>
+            <label>
+              <input type="radio" name="gender" value="male" /> <!-- Radio dla male -->
+              Mężczyzna
+            </label>
+            <label>
+              <input type="radio" name="gender" value="other" /> <!-- Radio dla other -->
+              Inna
+            </label>
+          </fieldset>
+
+          <label>
+            <input type="checkbox" name="terms" required /> <!-- Checkbox akceptacji -->
+            Akceptuję regulamin
+          </label>
+
+          <label for="bio">Krótki opis</label> <!-- Etykieta dla textarea -->
+          <textarea id="bio" name="bio" rows="4" cols="40"></textarea> <!-- Pole tekstowe wielowierszowe -->
+        </fieldset>
+
+        <fieldset> <!-- Grupa pól dotyczących plików -->
+          <legend>Pliki i zakresy</legend> <!-- Tytuł grupy -->
+          <label for="avatar">Avatar</label> <!-- Etykieta dla input file -->
+          <input id="avatar" name="avatar" type="file" accept="image/*" /> <!-- Wybór pliku (tylko obraz) -->
+
+          <label for="range">Poziom satysfakcji</label> <!-- Etykieta dla range -->
+          <input id="range" name="satisfaction" type="range" min="1" max="10" /> <!-- Suwak zakresu -->
+        </fieldset>
+
+        <button type="submit">Wyślij</button> <!-- Przycisk wysłania formularza -->
+        <button type="reset">Wyczyść</button> <!-- Przycisk resetujący pola -->
+      </form>
+    </main>
+  </body>
+</html>
+
+<!-- ---
+Dlaczego tak:
+- fieldset/legend grupują logicznie pola i poprawiają dostępność screen readerów.
+- label for/obudowanie inputów zapewnia powiązanie etykiet z polami i większy obszar klikalny.
+- Różne typy inputów (text/email/number/radio/checkbox/file/range/textarea/select) pokazują pełen przekrój HTML5 z walidacją.
+- Przyciski submit/reset ilustrują domyślne akcje formularza, a meta viewport/charset zabezpieczają poprawne wyświetlanie. -->

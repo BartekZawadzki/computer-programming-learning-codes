@@ -1,0 +1,68 @@
+/* Animacje podstawowe */
+@keyframes fade-in { /* definicja animacji fade-in */
+  from { opacity: 0; } /* start: niewidoczne */
+  to { opacity: 1; } /* koniec: widoczne */
+}
+
+@keyframes slide-up { /* animacja przesunięcia w górę */
+  from { transform: translateY(10px); opacity: 0; } /* start: niżej + transparentne */
+  to { transform: translateY(0); opacity: 1; } /* koniec: na miejscu + widoczne */
+}
+
+.fade-in {
+  animation: fade-in 300ms ease forwards; /* uruchomienie fade-in */
+}
+
+.slide-up {
+  animation: slide-up 300ms ease forwards; /* uruchomienie slide-up */
+}
+
+/* Przykład przycisku z transition */
+.btn-animated {
+  background: #0d6efd; /* tło */
+  color: #fff; /* tekst */
+  padding: 10px 14px; /* odstęp */
+  border-radius: 8px; /* zaokrąglenie */
+  border: none; /* brak ramki */
+  cursor: pointer; /* kursor */
+  transition: transform 120ms ease, box-shadow 120ms ease; /* płynne zmiany */
+}
+
+.btn-animated:hover {
+  transform: translateY(-1px); /* lekkie uniesienie */
+  box-shadow: 0 6px 16px rgba(13, 110, 253, 0.35); /* cień w hover */
+}
+
+.btn-animated:active {
+  transform: translateY(0); /* powrót przy kliknięciu */
+}
+
+/* Media queries – responsywność */
+:root {
+  --gap: 12px; /* baza odstępów */
+}
+
+.responsive-grid {
+  display: grid; /* aktywacja grid */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* responsywne kolumny */
+  gap: var(--gap); /* odstęp siatki */
+}
+
+@media (max-width: 768px) { /* breakpoint tablet */
+  :root { --gap: 10px; } /* mniejsze odstępy */
+  .hide-tablet { display: none !important; } /* ukryj na tabletach */
+  .stack-tablet { flex-direction: column; } /* wymuś kolumny na flexie */
+}
+
+@media (max-width: 480px) { /* breakpoint telefon */
+  :root { --gap: 8px; } /* jeszcze mniejsze odstępy */
+  .text-sm { font-size: 14px; } /* mniejszy tekst */
+  .btn-animated { width: 100%; } /* przyciski pełnej szerokości */
+}
+
+/* ---
+Dlaczego tak:
+// - Klasy fade-in/slide-up są gotowe do użycia, a animacje są krótkie i z ease, by nie spowalniać UI.
+// - btn-animated z transition/hover/active pokazuje subtelne efekty bez przesady.
+// - responsive-grid z auto-fit/minmax dostosowuje kolumny do szerokości; zmienne --gap skalują odstępy w media queries.
+// - Helpery hide/stack/text-sm pokazują typowe reakcje na breakpoints dla tablet/telefon. */

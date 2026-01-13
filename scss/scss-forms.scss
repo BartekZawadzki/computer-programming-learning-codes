@@ -1,0 +1,79 @@
+@import "./scss-tokens.scss"; // zmienne
+@import "./scss-mixins.scss"; // mixiny
+
+// Formularze: pola, stany, błędy, pomoc
+form {
+  display: grid; // układ siatki
+  gap: $space-3; // odstępy między polami
+  max-width: 520px; // szerokość maksymalna
+}
+
+label {
+  font-weight: 600; // wyróżnienie etykiety
+  display: block; // blok dla układu w kolumnie
+  margin-bottom: $space-1; // mały odstęp pod etykietą
+}
+
+.field {
+  display: flex; // układ label + input (opcjonalnie)
+  flex-direction: column; // kolumna
+  gap: $space-1; // mała przerwa
+}
+
+input,
+select,
+textarea {
+  padding: 10px 12px; // wewnętrzny odstęp
+  border: 1px solid $color-border; // ramka
+  border-radius: $radius-sm; // zaokrąglenie
+  background: #fff; // tło
+  color: $color-text; // tekst
+  transition: border-color 0.15s ease, box-shadow 0.15s ease; // płynna zmiana
+  font-family: inherit; // dziedziczenie fontu
+  &:focus {
+    @include focus-ring(); // ring focus
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.2); // dodatkowy ring
+  }
+  &:disabled {
+    background: lighten($color-bg, 4%); // przygaszone tło
+    color: lighten($color-muted, 10%); // jaśniejszy tekst
+    cursor: not-allowed; // kursor zakaz
+  }
+}
+
+.error {
+  border-color: $color-danger; // czerwone obramowanie
+  box-shadow: 0 0 0 3px rgba($color-danger, 0.2); // ring błędu
+}
+
+.help {
+  font-size: 14px; // mniejszy tekst pomocy
+  color: $color-muted; // przygaszony kolor
+}
+
+.error-text {
+  color: $color-danger; // czerwony tekst błędu
+  font-size: 14px; // mniejszy rozmiar
+}
+
+.checkbox-inline {
+  display: inline-flex; // etykieta + checkbox inline
+  align-items: center; // wyśrodkowanie pionowe
+  gap: $space-1; // przerwa między checkboxem a tekstem
+}
+
+.btn-submit {
+  @extend .btn; // bazowy przycisk z utilities
+  background: $color-primary; // tło
+  color: #fff; // tekst
+  border: none; // brak ramki
+  &:hover { background: $color-primary-dark; } // ciemniejszy hover
+  &:active { transform: translateY(1px); } // wciśnięcie
+}
+
+// ---
+// Dlaczego tak:
+// - SCSS korzysta z tokenów/mixinów, by mieć spójne kolory, spacing i focus-ring w całym formularzu.
+// - Grid + .field (flex kolumna) daje przewidywalny układ etykieta/pole, a dziedziczenie fontu trzyma spójność typografii.
+// - Stany :focus/:disabled/.error mają jasne kolory i ring, co poprawia dostępność i komunikację błędów.
+// - btn-submit rozszerza .btn i wykorzystuje primary/primary-dark, by pokazać, jak budować warianty bez duplikacji. 

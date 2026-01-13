@@ -1,0 +1,47 @@
+// build.gradle modułu aplikacji (app) – szkic z komentarzami.
+apply plugin: "com.android.application"         // plugin aplikacji Android
+apply plugin: "org.jetbrains.kotlin.android"    // plugin Kotlin (jeśli używasz)
+
+android {
+    namespace "com.example.reactnativeapp"      // namespace aplikacji (zmień)
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.example.reactnativeapp" // unikalny ID aplikacji
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1                              // wersja kodowa
+        versionName "1.0"                          // wersja tekstowa
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false                    // wyłącz R8/ProGuard (włącz w prod dla obfuskacji)
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+        debug {
+            applicationIdSuffix ".debug"           // suffix ID dla debug
+            debuggable true                        // debug on
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11 // wersja języka Java
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"                           // target JVM dla Kotlin
+    }
+}
+
+dependencies {
+    implementation "com.facebook.react:react-native:+" // RN (podmieniane przez autolinka w realnym projekcie)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.ext.kotlinVersion}" // Kotlin stdlib
+    // Dodaj inne zależności RN/Android w razie potrzeby
+}
+
+// ---
+// Dlaczego tak:
+// - Oddzielny build.gradle dla modułu app pozwala konfigurować ID, min/target/compile SDK i buildTypes.
+// - Wersje SDK i Kotlin pochodzą z root ext, by utrzymać spójność w całym projekcie.
+// - Sekcja release może włączyć minify/ProGuard (tu wyłączone dla prostoty); debug ma osobny suffix ID.

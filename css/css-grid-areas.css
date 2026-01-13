@@ -1,0 +1,67 @@
+/* Przykład layoutu w CSS Grid z template areas */
+
+:root {
+  --gap: 12px; /* odstęp między obszarami */
+  --bg: #f6f8fa; /* tło strony */
+}
+
+body {
+  margin: 0; /* reset marginesu */
+  background: var(--bg); /* tło */
+  font-family: Arial, sans-serif; /* font bazowy */
+}
+
+.grid-page {
+  display: grid; /* aktywuje grid */
+  grid-template-areas: /* definiuje nazwy obszarów */
+    "header header"
+    "nav    main"
+    "footer footer"; /* układ 2 kolumn, 3 wiersze */
+  grid-template-columns: 240px 1fr; /* szerokość kolumn */
+  grid-template-rows: auto 1fr auto; /* wysokość wierszy */
+  gap: var(--gap); /* odstęp między obszarami */
+  min-height: 100vh; /* pełna wysokość */
+  padding: var(--gap); /* wewnętrzny odstęp */
+}
+
+.grid-page > * {
+  background: #fff; /* białe tło sekcji */
+  border: 1px solid #e2e8f0; /* cienka ramka */
+  border-radius: 8px; /* zaokrąglenie */
+  padding: 12px; /* odstęp wewnętrzny */
+}
+
+.header {
+  grid-area: header; /* przypisanie do obszaru header */
+}
+
+.nav {
+  grid-area: nav; /* przypisanie do obszaru nav */
+}
+
+.main {
+  grid-area: main; /* przypisanie do obszaru main */
+}
+
+.footer {
+  grid-area: footer; /* przypisanie do obszaru footer */
+}
+
+/* Responsywność: na węższych ekranach przełącz na jedną kolumnę */
+@media (max-width: 768px) {
+  .grid-page {
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "footer"; /* układ jednokolumnowy */
+    grid-template-columns: 1fr; /* jedna kolumna */
+  }
+}
+
+/* ---
+Dlaczego tak:
+- grid-template-areas ułatwia wizualne planowanie layoutu (header/nav/main/footer) i przypisanie klas do obszarów.
+- gap/padding i wspólne style dla dzieci dają spójny wygląd sekcji bez powtarzania reguł.
+- Media query zwija układ do jednej kolumny na mobile, co poprawia czytelność.
+- Zmienne (--gap, --bg) pozwalają łatwo modyfikować odstępy/tło w jednym miejscu. */

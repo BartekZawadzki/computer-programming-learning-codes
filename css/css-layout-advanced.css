@@ -1,0 +1,84 @@
+/* Zaawansowany layout: sticky header, sticky sidebar, fluid grid */
+
+:root {
+  --gap: 16px; /* odstęp bazowy */
+  --sidebar-width: 240px; /* szerokość boczna */
+}
+
+body {
+  margin: 0; /* reset */
+  font-family: "Inter", Arial, sans-serif; /* font bazowy */
+  background: #f8fafc; /* tło strony */
+}
+
+.page {
+  display: grid; /* układ grid */
+  grid-template-rows: auto 1fr; /* wiersz nagłówka i reszta */
+  min-height: 100vh; /* pełna wysokość */
+}
+
+.header {
+  position: sticky; /* przyklejony nagłówek */
+  top: 0; /* przyklejenie do góry */
+  z-index: 10; /* nad resztą */
+  background: #0d6efd; /* tło nagłówka */
+  color: #fff; /* tekst */
+  padding: 12px var(--gap); /* odstępy */
+}
+
+.shell {
+  display: grid; /* główny grid */
+  grid-template-columns: var(--sidebar-width) 1fr; /* sidebar + content */
+  gap: var(--gap); /* odstęp między kolumnami */
+  padding: var(--gap); /* odstęp wewnętrzny */
+}
+
+.sidebar {
+  position: sticky; /* przyklejony sidebar */
+  top: 72px; /* poniżej nagłówka */
+  align-self: start; /* zaczyna się na górze */
+  height: calc(100vh - 96px); /* wysokość minus header/padding (przykład) */
+  overflow-y: auto; /* przewijanie zawartości sidebaru */
+  background: #ffffff; /* tło */
+  border: 1px solid #e2e8f0; /* ramka */
+  border-radius: 12px; /* zaokrąglenie */
+  padding: 12px; /* odstęp */
+}
+
+.content {
+  background: #ffffff; /* tło główne */
+  border: 1px solid #e2e8f0; /* ramka */
+  border-radius: 12px; /* zaokrąglenie */
+  padding: 16px; /* odstęp */
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08); /* cień */
+}
+
+.content-grid {
+  display: grid; /* grid wewnątrz treści */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* responsywne kolumny */
+  gap: var(--gap); /* odstęp */
+}
+
+.card {
+  background: #fff; /* tło karty */
+  border: 1px solid #e2e8f0; /* ramka */
+  border-radius: 10px; /* zaokrąglenie */
+  padding: 12px; /* odstęp */
+}
+
+@media (max-width: 960px) {
+  .shell {
+    grid-template-columns: 1fr; /* jedna kolumna */
+  }
+  .sidebar {
+    position: static; /* brak sticky w wąskich viewportach */
+    height: auto; /* automatyczna wysokość */
+  }
+}
+
+/* ---
+Dlaczego tak:
+- Sticky header i sidebar poprawiają dostęp do nawigacji/przypiętych elementów przy scrollu.
+- Grid shell (sidebar + content) z auto-fit w content-grid daje responsywne kafelki bez dodatkowych mediów.
+- Zmienne --gap/--sidebar-width ułatwiają szybkie dostosowanie spacingu/szerokości w jednym miejscu.
+- Media query wyłącza sticky i układ kolumnowy na węższych ekranach, by zachować czytelność. */

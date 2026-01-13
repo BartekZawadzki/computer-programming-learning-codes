@@ -1,0 +1,32 @@
+# .gitattributes z komentarzami: normalizacja końców linii, wskazówki dla diff/merge.
+
+# Normalizuj końce linii do LF w repo; Windows będzie konwertować do CRLF w checkout (autocrlf)
+* text=auto eol=lf
+
+# Pliki binarne – nie próbuj diff/merge
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+
+# Lepsze diffy dla kodu (jeśli zainstalowano odpowiednie drivere)
+*.md  text diff=markdown
+*.js  text diff=javascript
+*.ts  text diff=typescript
+*.css text
+*.scss text
+*.html text
+*.json text
+*.yml text
+*.yaml text
+
+# Zewnętrzne narzędzia mogą użyć linguist do statystyk
+# *.generated linguist-generated=true
+
+# ---
+# Dlaczego tak:
+# - Normalizacja końcówek linii (LF) zmniejsza konflikty między systemami (Windows/Linux/Mac).
+# - Binaria oznaczone jako binary zapobiegają bezwartościowym diffom/merge.
+# - Specyficzne diffy dla języków poprawiają czytelność zmian w PR/commitach.

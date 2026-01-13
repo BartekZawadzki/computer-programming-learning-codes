@@ -1,0 +1,45 @@
+/* Stylowanie tabeli z czytelnymi odstępami i hover */
+
+table {
+  width: 100%; /* tabela wypełnia kontener */
+  border-collapse: collapse; /* łączy obramowania */
+  border: 1px solid #e2e8f0; /* obramowanie zewnętrzne */
+  background: #fff; /* tło */
+}
+
+thead {
+  background: #f8fafc; /* jasne tło nagłówka */
+}
+
+th,
+td {
+  padding: 10px 12px; /* odstępy w komórkach */
+  border-bottom: 1px solid #e2e8f0; /* linie między wierszami */
+  text-align: left; /* wyrównanie tekstu */
+}
+
+th {
+  font-weight: 700; /* mocniejszy nagłówek */
+  color: #0f172a; /* kolor nagłówka */
+}
+
+tbody tr:hover {
+  background: #f1f5f9; /* podświetlenie wiersza */
+}
+
+caption {
+  caption-side: top; /* podpis nad tabelą */
+  font-weight: 600; /* wyróżniony podpis */
+  padding: 8px 0; /* odstęp */
+}
+
+.numeric {
+  text-align: right; /* wyrównanie liczb do prawej */
+}
+
+/* ---
+Dlaczego tak:
+- border-collapse i spójne obramowanie dają czystą tabelę bez podwójnych linii.
+- Nagłówek z innym tłem i mocniejszą czcionką poprawia czytelność kolumn.
+- Hover na wierszach ułatwia śledzenie w poziomie, a caption nad tabelą dodaje kontekst danych.
+- Klasa .numeric wyrównuje liczby do prawej, co jest standardem w tabelach liczbowych. */

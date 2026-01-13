@@ -1,0 +1,18 @@
+# Wyklucz pliki, które nie powinny trafić do obrazu Docker
+node_modules
+npm-debug.log
+dist
+build
+.git
+.gitignore
+.env
+.env.local
+.DS_Store
+coverage
+tmp
+logs
+
+# ---
+# Dlaczego tak:
+# - Ignorowanie node_modules/build/logów/.env zmniejsza kontekst budowy i ryzyko wycieku sekretów.
+# - Pomaga w szybszych buildach, bo Docker nie pakuje zbędnych plików do kontekstu.

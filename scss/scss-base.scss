@@ -1,0 +1,52 @@
+@import "./scss-tokens.scss"; // zmienne bazowe
+
+// Reset i baza typografii
+* { box-sizing: border-box; } // uwzględnia padding/border w width/height
+
+body {
+  margin: 0; // usuwa domyślne marginesy
+  font-family: $font-family-base; // rodzina fontów
+  font-size: $font-base; // bazowy rozmiar
+  line-height: $line-base; // bazowy line-height
+  color: $color-text; // kolor tekstu
+  background: $color-bg; // tło strony
+}
+
+a {
+  color: $color-primary; // kolor linków
+  text-decoration: none; // brak podkreślenia
+  &:hover { text-decoration: underline; } // podkreślenie w hover
+}
+
+p { margin: 0 0 $space-3 0; } // odstęp pod akapitami
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 $space-3 0; // spójne odstępy pod nagłówkami
+  font-weight: 600; // waga czcionki
+  color: darken($color-text, 5%); // lekko ciemniejszy nagłówek
+}
+
+img {
+  max-width: 100%; // obraz nie wyjdzie poza kontener
+  height: auto; // zachowuje proporcje
+  display: block; // usuwa whitespace inline
+}
+
+ul {
+  padding-left: 20px; // wcięcie listy
+  margin: 0 0 $space-3 0; // odstęp pod listą
+}
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; // monospace
+  background: lighten($color-border, 12%); // jasne tło kodu
+  padding: 2px 4px; // mały padding
+  border-radius: $radius-sm; // zaokrąglenie
+}
+
+// ---
+// Dlaczego tak:
+// - Bazuje na tokenach SCSS, by utrzymać spójne kolory/spacing/typografię w całym projekcie.
+// - Reset box-sizing i marginesów buduje przewidywalny layout; linki mają minimalny hover underline dla czytelności.
+// - Nagłówki/akapity/listy mają spójne odstępy, co tworzy rytm pionowy; obrazy są responsywne (max-width:100%).
+// - Kod z tłem i monospace odcina fragmenty techniczne; darken/lighten wykorzystuje zmienne zamiast stałych wartości. 

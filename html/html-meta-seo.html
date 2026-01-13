@@ -1,0 +1,60 @@
+<!DOCTYPE html> <!-- Deklaracja HTML5 -->
+<html lang="pl"> <!-- Ustawienie języka -->
+  <head> <!-- Metadane dokumentu -->
+    <meta charset="UTF-8" /> <!-- Kodowanie znaków -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsywność -->
+    <title>Meta i SEO</title> <!-- Tytuł karty -->
+    <meta name="description" content="Przykład meta tagów, favicon, preload i strukturalnych danych." /> <!-- Opis SEO -->
+    <meta name="keywords" content="html, seo, meta tags, og" /> <!-- Słowa kluczowe (mała waga w SEO) -->
+    <link rel="icon" href="/favicon.ico" /> <!-- Favicon -->
+    <link rel="canonical" href="https://example.com/meta-seo" /> <!-- Kanoniczny URL strony -->
+    <meta name="theme-color" content="#0d6efd" /> <!-- Kolor UI w przeglądarkach mobilnych -->
+
+    <!-- Open Graph (og) dla udostępniania w social -->
+    <meta property="og:title" content="Meta i SEO" /> <!-- Tytuł OG -->
+    <meta property="og:description" content="Przykład poprawnych meta tagów i danych strukturalnych." /> <!-- Opis OG -->
+    <meta property="og:type" content="website" /> <!-- Typ zasobu -->
+    <meta property="og:url" content="https://example.com/meta-seo" /> <!-- URL strony -->
+    <meta property="og:image" content="https://example.com/cover.png" /> <!-- Obraz podglądu -->
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" /> <!-- Typ karty -->
+    <meta name="twitter:title" content="Meta i SEO" /> <!-- Tytuł na Twitterze -->
+    <meta name="twitter:description" content="Meta tagi, OG, dane strukturalne, preload." /> <!-- Opis na Twitterze -->
+    <meta name="twitter:image" content="https://example.com/cover.png" /> <!-- Obraz na Twitterze -->
+
+    <!-- Preload kluczowego zasobu (np. fontu) -->
+    <link rel="preload" href="/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin /> <!-- Preload fontu -->
+
+    <!-- Dane strukturalne JSON-LD (przykład artykułu) -->
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Meta i SEO",
+      "author": { "@type": "Person", "name": "Jan Kowalski" },
+      "datePublished": "2026-01-13",
+      "image": "https://example.com/cover.png",
+      "description": "Przykład meta tagów i danych strukturalnych."
+    }</script>
+  </head>
+  <body> <!-- Treść strony -->
+    <main> <!-- Główna treść -->
+      <h1>Meta i SEO</h1> <!-- Nagłówek główny -->
+      <p>Ten dokument pokazuje kluczowe meta tagi i dane strukturalne.</p> <!-- Krótki opis -->
+      <ul> <!-- Lista rekomendacji -->
+        <li>Ustaw poprawny <code>lang</code> i <code>charset</code>.</li> <!-- Wskazówka -->
+        <li>Dodaj <code>description</code>, OG, Twitter Cards.</li> <!-- Wskazówka -->
+        <li>Używaj <code>canonical</code> dla duplikatów.</li> <!-- Wskazówka -->
+        <li>Preload kluczowych zasobów (fonty, hero img).</li> <!-- Wskazówka -->
+        <li>Dodaj dane strukturalne (JSON-LD) dla lepszego wyświetlania w wyszukiwarkach.</li> <!-- Wskazówka -->
+      </ul>
+    </main>
+  </body>
+</html>
+
+<!-- ---
+Dlaczego tak:
+- Meta charset/viewport/lang i description to podstawa poprawnego renderu i SEO.
+- OG/Twitter Cards zapewniają czytelne podglądy w social media (tytuł/opis/obraz).
+- link rel="canonical" zapobiega duplikacji treści, preload przyspiesza ładowanie kluczowych zasobów (font).
+- JSON-LD (Article) dodaje dane strukturalne dla wyszukiwarek; theme-color/favicon poprawiają UX na mobile. -->

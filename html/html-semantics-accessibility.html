@@ -1,0 +1,88 @@
+<!DOCTYPE html> <!-- Deklaracja HTML5 -->
+<html lang="pl"> <!-- Ustawienie języka dokumentu -->
+  <head> <!-- Sekcja meta -->
+    <meta charset="UTF-8" /> <!-- Kodowanie znaków -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsywność -->
+    <title>Semantyka i A11y</title> <!-- Tytuł strony -->
+  </head>
+  <body> <!-- Treść strony -->
+    <header role="banner"> <!-- Nagłówek strony (banner) -->
+      <h1>Semantyczny dokument</h1> <!-- Główny nagłówek -->
+      <nav aria-label="Menu główne"> <!-- Nawigacja z etykietą a11y -->
+        <ul> <!-- Lista linków -->
+          <li><a href="#main">Przejdź do treści</a></li> <!-- Link skip-to-content -->
+          <li><a href="#footer">Idź do stopki</a></li> <!-- Link do stopki -->
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main"> <!-- Główna zawartość -->
+      <section aria-labelledby="art1"> <!-- Sekcja z nagłówkiem referencyjnym -->
+        <h2 id="art1">Artykuł semantyczny</h2> <!-- Nagłówek sekcji -->
+        <article> <!-- Samodzielny artykuł -->
+          <h3>Tytuł artykułu</h3> <!-- Nagłówek artykułu -->
+          <p>To jest przykładowy artykuł z sensowną strukturą.</p> <!-- Akapit treści -->
+        </article>
+      </section>
+
+      <section aria-labelledby="table"> <!-- Sekcja z tabelą -->
+        <h2 id="table">Tabela z nagłówkami</h2> <!-- Nagłówek sekcji tabeli -->
+        <table> <!-- Tabela danych -->
+          <caption>Wyniki sprintu</caption> <!-- Opis tabeli -->
+          <thead> <!-- Nagłówek tabeli -->
+            <tr> <!-- Wiersz nagłówka -->
+              <th scope="col">Zespół</th> <!-- Kolumna: zespół -->
+              <th scope="col">Punkty</th> <!-- Kolumna: punkty -->
+              <th scope="col">Velocity</th> <!-- Kolumna: velocity -->
+            </tr>
+          </thead>
+          <tbody> <!-- Treść tabeli -->
+            <tr> <!-- Wiersz danych -->
+              <th scope="row">Alpha</th> <!-- Nagłówek wiersza -->
+              <td>34</td> <!-- Dane punktowe -->
+              <td>18</td> <!-- Velocity -->
+            </tr>
+            <tr>
+              <th scope="row">Beta</th>
+              <td>29</td>
+              <td>15</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="aria"> <!-- Sekcja o ARIA -->
+        <h2 id="aria">ARIA i dostępność</h2> <!-- Nagłówek sekcji -->
+        <button aria-pressed="false"> <!-- Przycisk z atrybutem stanu -->
+          Przełącz tryb
+        </button>
+        <div role="alert"> <!-- Komunikat alert -->
+          Operacja zakończona pomyślnie.
+        </div>
+        <form aria-describedby="hint"> <!-- Formularz z opisem -->
+          <label for="search">Szukaj</label> <!-- Etykieta -->
+          <input id="search" type="search" placeholder="Wpisz frazę" /> <!-- Pole wyszukiwania -->
+          <p id="hint">Możesz użyć min. 3 znaków.</p> <!-- Podpowiedź dla pola -->
+        </form>
+      </section>
+
+      <section aria-labelledby="aria-live"> <!-- Sekcja live region -->
+        <h2 id="aria-live">Live region</h2> <!-- Nagłówek sekcji -->
+        <div aria-live="polite" aria-atomic="true"> <!-- Region dynamicznych komunikatów -->
+          Status pojawi się tutaj.
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" role="contentinfo"> <!-- Stopka z rolą contentinfo -->
+      <p>Stopka strony: kontakt@example.com</p> <!-- Dane kontaktowe -->
+    </footer>
+  </body>
+</html>
+
+<!-- ---
+Dlaczego tak:
+- Semantyczne tagi (header/main/section/article/footer) z rolami i aria-label/id poprawiają nawigację czytników ekranu.
+- Skip linki i role banner/contentinfo wspierają szybkie przeskakiwanie po treści.
+- Tabela z caption, thead/tbody i scope dla th zwiększa dostępność i czytelność danych.
+- ARIA (aria-pressed, role="alert", aria-live) pokazuje, jak komunikować stany i komunikaty dynamiczne użytkownikom A11y. -->

@@ -1,0 +1,48 @@
+// Animacje i efekty w SCSS: fade-in, slide-up, skeleton, hover shadow
+
+// Fade-in: pojawianie się elementu
+@keyframes fade-in {
+  from { opacity: 0; } // start: niewidoczne
+  to { opacity: 1; } // koniec: w pełni widoczne
+}
+
+// Slide-up: przesunięcie w górę z zanikania
+@keyframes slide-up {
+  from { transform: translateY(10px); opacity: 0; } // niżej + przezroczyste
+  to { transform: translateY(0); opacity: 1; } // na miejscu + widoczne
+}
+
+// Skeleton shimmer: animacja ładowania
+@keyframes shimmer {
+  0% { background-position: 200% 0; } // start poza widokiem
+  100% { background-position: -200% 0; } // przesunięcie w lewo
+}
+
+// Klasy użytkowe dla animacji
+.fade-in { animation: fade-in 300ms ease forwards; } // klasa fade-in
+.slide-up { animation: slide-up 300ms ease forwards; } // klasa slide-up
+
+// Skeleton loader
+.skeleton {
+  position: relative; // kontekst
+  overflow: hidden; // ukrycie wycieku gradientu
+  background: linear-gradient(90deg, #e2e8f0 25%, #f8fafc 50%, #e2e8f0 75%); // gradient
+  background-size: 200% 100%; // większy gradient do przesuwu
+  animation: shimmer 1.4s ease infinite; // animacja przesuwu
+}
+
+// Hover shadow z lekkim uniesieniem
+.shadow-hover {
+  transition: box-shadow 180ms ease, transform 120ms ease; // płynne zmiany
+  &:hover {
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18); // mocniejszy cień
+    transform: translateY(-2px); // lekkie uniesienie
+  }
+}
+
+// ---
+// Dlaczego tak:
+// - Zdefiniowane keyframes (fade-in, slide-up, shimmer) i gotowe klasy użytkowe przyspieszają dodawanie animacji.
+// - Skeleton używa animowanego gradientu 200% szerokości, co daje gładki efekt ładowania.
+// - shadow-hover zapewnia delikatny ruch i cień w hover bez pisania unikalnych reguł na komponentach.
+// - Krótkie czasy i ease dbają o responsywność UI bez przesadnego obciążenia użytkownika. 

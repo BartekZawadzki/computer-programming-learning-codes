@@ -1,0 +1,112 @@
+<!-- Bootstrap 5 przykłady z komentarzami: siatka, navbar, karty, przyciski. -->
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CDN Bootstrap 5 (prod) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Bootstrap przykłady</title>
+</head>
+<body>
+  <!-- Navbar responsywny -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">MojaApp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Funkcje</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <!-- Siatka: 3 kolumny na md+ i pełna szerokość na mobile -->
+    <div class="row g-3">
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Karta 1</h5>
+            <p class="card-text">Treść karty, opis funkcji.</p>
+            <a href="#" class="btn btn-primary">Akcja</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Karta 2</h5>
+            <p class="card-text">Treść karty, opis funkcji.</p>
+            <a href="#" class="btn btn-outline-secondary">Więcej</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Karta 3</h5>
+            <p class="card-text">Treść karty, opis funkcji.</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-success btn-sm">OK</button>
+              <button class="btn btn-danger btn-sm">Usuń</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formularz z walidacją klienta (Bootstrap) -->
+    <form class="row g-3 needs-validation mt-4" novalidate>
+      <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" required>
+        <div class="invalid-feedback">Podaj poprawny email.</div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Hasło</label>
+        <input type="password" class="form-control" required minlength="6">
+        <div class="invalid-feedback">Min. 6 znaków.</div>
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="terms" required>
+          <label class="form-check-label" for="terms">Akceptuję regulamin</label>
+          <div class="invalid-feedback">Zaznacz, aby kontynuować.</div>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Wyślij</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Aktywacja walidacji Bootstrap (front-end)
+    (() => {
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+</body>
+</html>
+
+<!-- ---
+Dlaczego tak:
+- CDN pozwala szybko zademować komponenty Bootstrap bez buildu; w produkcji zwykle bundler.
+- Navbar + grid + form pokazują bazowe klocki: responsywna siatka, gotowe przyciski i walidację klienta.
+- Skrypt walidacji wykorzystuje natywny API form + klasy Bootstrapa, co daje minimum własnego JS. -->

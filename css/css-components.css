@@ -1,0 +1,64 @@
+/* Proste komponenty oparte na tokenach */
+@import "./css-tokens.css"; /* importuje design tokens */
+
+.badge {
+  display: inline-flex; /* ułatwia wyrównanie tekstu */
+  align-items: center; /* wyśrodkowanie pionowe */
+  padding: var(--space-1) var(--space-2); /* odstępy */
+  border-radius: var(--radius-full); /* pełne zaokrąglenie */
+  font-weight: 600; /* waga czcionki */
+  background: #e2e8f0; /* domyślne tło */
+  color: var(--color-text); /* domyślny tekst */
+}
+
+.badge-primary {
+  background: var(--color-primary); /* tło główne */
+  color: #fff; /* jasny tekst */
+}
+
+.badge-success {
+  background: var(--color-success); /* tło sukces */
+  color: #fff; /* jasny tekst */
+}
+
+.badge-warning {
+  background: var(--color-warning); /* tło ostrzeżenie */
+  color: #0f172a; /* ciemny tekst */
+}
+
+.alert {
+  border-radius: var(--radius-md); /* zaokrąglenie */
+  padding: var(--space-3) var(--space-4); /* odstęp wewnętrzny */
+  border: 1px solid var(--color-border); /* ramka */
+  background: var(--color-card); /* tło */
+  color: var(--color-text); /* tekst */
+  box-shadow: var(--shadow-sm); /* lekki cień */
+}
+
+.alert-info { border-color: #0ea5e9; background: #e0f2fe; } /* alert informacyjny */
+.alert-success { border-color: var(--color-success); background: #dcfce7; } /* alert sukces */
+.alert-warning { border-color: var(--color-warning); background: #fef3c7; } /* alert ostrzeżenie */
+.alert-danger { border-color: var(--color-danger); background: #fee2e2; } /* alert błąd */
+
+.chip {
+  display: inline-flex; /* układ inline */
+  align-items: center; /* wyrównanie */
+  gap: var(--space-2); /* odstęp ikona-tekst */
+  padding: var(--space-1) var(--space-2); /* wypełnienie */
+  border: 1px solid var(--color-border); /* ramka */
+  border-radius: var(--radius-full); /* pełne zaokrąglenie */
+  background: var(--color-card); /* tło */
+  color: var(--color-text); /* tekst */
+}
+
+.chip .remove {
+  cursor: pointer; /* kursor ręki */
+  color: var(--color-muted); /* kolor ikony/usunięcia */
+}
+
+/* ---
+Dlaczego tak:
+- Komponenty korzystają z tokenów (spacing, kolory, radius), co zapewnia spójność i łatwe theming.
+- Badge/chip to lekkie elementy inline-flex, ułatwiają wyrównanie ikony/tekstu i używają pełnego zaokrąglenia.
+- Alert ma warianty kolorystyczne, ale wspólną bazę (padding, border, shadow) by zachować jednolity wygląd.
+- Oddzielenie klas wariantów (primary/success/warning) upraszcza rozszerzanie bez kopiowania bazowych stylów. */

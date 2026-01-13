@@ -1,0 +1,90 @@
+<!DOCTYPE html> <!-- Deklaracja typu dokumentu HTML5 -->
+<html lang="pl"> <!-- Główny element dokumentu z językiem polskim -->
+  <head> <!-- Sekcja meta-informacji -->
+    <meta charset="UTF-8" /> <!-- Kodowanie znaków -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsywność na urządzeniach mobilnych -->
+    <title>HTML Basics</title> <!-- Tytuł karty przeglądarki -->
+    <meta name="description" content="Podstawowy szablon HTML z komentarzami" /> <!-- Opis strony dla SEO -->
+    <link rel="stylesheet" href="styles.css" /> <!-- Zewnętrzny arkusz stylów -->
+  </head>
+  <body> <!-- Treść widoczna na stronie -->
+    <header> <!-- Nagłówek strony -->
+      <h1>Witaj w HTML</h1> <!-- Główny nagłówek -->
+      <nav aria-label="Główna nawigacja"> <!-- Nawigacja z etykietą dostępności -->
+        <ul> <!-- Lista linków nawigacyjnych -->
+          <li><a href="#sekcja-artykul">Artykuł</a></li> <!-- Link do sekcji artykułu -->
+          <li><a href="#sekcja-listy">Listy</a></li> <!-- Link do sekcji list -->
+          <li><a href="#sekcja-media">Media</a></li> <!-- Link do sekcji multimediów -->
+        </ul>
+      </nav>
+    </header>
+
+    <main> <!-- Główna zawartość dokumentu -->
+      <section id="sekcja-artykul"> <!-- Sekcja artykułu -->
+        <article> <!-- Samodzielny artykuł -->
+          <h2>Prosty artykuł</h2> <!-- Nagłówek artykułu -->
+          <p>To jest akapit demonstracyjny.</p> <!-- Akapit tekstu -->
+          <p>
+            Możesz wyróżniać <strong>ważne treści</strong> i dodawać
+            <em>akcenty</em>.
+          </p> <!-- Przykład użycia strong/em -->
+        </article>
+      </section>
+
+      <section id="sekcja-listy"> <!-- Sekcja z listami -->
+        <h2>Listy</h2> <!-- Nagłówek sekcji list -->
+        <h3>Lista uporządkowana</h3> <!-- Podnagłówek -->
+        <ol> <!-- Lista numerowana -->
+          <li>Pierwszy krok</li> <!-- Element listy -->
+          <li>Drugi krok</li>
+          <li>Trzeci krok</li>
+        </ol>
+        <h3>Lista nieuporządkowana</h3> <!-- Podnagłówek -->
+        <ul> <!-- Lista wypunktowana -->
+          <li>Element A</li> <!-- Element listy -->
+          <li>Element B</li>
+          <li>Element C</li>
+        </ul>
+        <h3>Lista definicji</h3> <!-- Podnagłówek -->
+        <dl> <!-- Lista definicji -->
+          <dt>HTML</dt> <!-- Termin -->
+          <dd>Język znaczników do tworzenia stron.</dd> <!-- Definicja -->
+          <dt>CSS</dt>
+          <dd>Stylowanie wyglądu stron.</dd>
+        </dl>
+      </section>
+
+      <section id="sekcja-media"> <!-- Sekcja multimediów -->
+        <h2>Media</h2> <!-- Nagłówek sekcji -->
+        <figure> <!-- Kontener na obraz z podpisem -->
+          <img src="https://via.placeholder.com/320x180" alt="Przykładowy obraz zastępczy" /> <!-- Obraz z tekstem alternatywnym -->
+          <figcaption>Obraz demonstracyjny 320x180</figcaption> <!-- Podpis do obrazu -->
+        </figure>
+        <video controls width="320"> <!-- Element video z kontrolkami -->
+          <source src="sample.mp4" type="video/mp4" /> <!-- Źródło wideo -->
+          Przeglądarka nie obsługuje wideo. <!-- Fallback tekstowy -->
+        </video>
+        <audio controls> <!-- Element audio z kontrolkami -->
+          <source src="sample.mp3" type="audio/mpeg" /> <!-- Źródło audio -->
+          Przeglądarka nie obsługuje audio. <!-- Fallback tekstowy -->
+        </audio>
+      </section>
+    </main>
+
+    <aside> <!-- Treść poboczna -->
+      <h2>Aside</h2> <!-- Nagłówek sekcji bocznej -->
+      <p>Tu można umieścić linki, reklamy lub notatki.</p> <!-- Akapit poboczny -->
+    </aside>
+
+    <footer> <!-- Stopka strony -->
+      <p>&copy; 2026 HTML Cheatsheet</p> <!-- Informacja o prawach autorskich -->
+    </footer>
+  </body>
+</html>
+
+<!-- ---
+Dlaczego tak:
+- Struktura semantyczna (header/main/section/article/aside/footer) poprawia SEO i dostępność.
+- Nawigacja ma aria-label, a linki wskazują sekcje z id, co ułatwia skakanie po stronie.
+- Przykłady list (ol/ul/dl) i media (img/video/audio) pokazują typowe elementy z alt/figcaption/fallback.
+- Meta charset/viewport i link do CSS to minimalny zestaw startowy dla responsywnej strony. -->

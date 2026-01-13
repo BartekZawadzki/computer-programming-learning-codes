@@ -1,0 +1,32 @@
+@import "./scss-tokens.scss"; // zmienne
+
+// Stylowanie tabeli z czytelnymi odstępami i hover
+table {
+  width: 100%; // tabela wypełnia kontener
+  border-collapse: collapse; // łączy obramowania
+  border: 1px solid $color-border; // obramowanie zewnętrzne
+  background: $color-card; // tło
+}
+
+thead { background: lighten($color-bg, 4%); } // jasne tło nagłówka
+
+th, td {
+  padding: 10px 12px; // odstępy w komórkach
+  border-bottom: 1px solid $color-border; // linie między wierszami
+  text-align: left; // wyrównanie tekstu
+}
+
+th {
+  font-weight: 700; // mocniejszy nagłówek
+  color: $color-text; // kolor nagłówka
+}
+
+tbody tr:hover { background: lighten($color-bg, 6%); } // podświetlenie wiersza
+
+caption {
+  caption-side: top; // podpis nad tabelą
+  font-weight: 600; // wyróżniony podpis
+  padding: $space-2 0; // odstęp
+}
+
+.numeric { text-align: right; } // wyrównanie liczb do prawej

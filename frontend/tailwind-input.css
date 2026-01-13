@@ -1,0 +1,19 @@
+/* Plik wejściowy Tailwind: dyrektywy @tailwind + przykładowe utility preflight. */
+@tailwind base;          /* reset/normalizacja Tailwind */
+@tailwind components;    /* komponenty (np. formularze jeśli plugin forms) */
+@tailwind utilities;     /* klasy utility */
+
+/* Przykładowe style globalne (opcjonalne) */
+body {
+  @apply bg-slate-50 text-slate-900;
+}
+
+a {
+  @apply text-sky-600 hover:text-sky-700 underline;
+}
+
+/* ---
+Dlaczego tak:
+- Dyrektywy @tailwind generują bazę/utilities; to standardowy entrypoint dla bundlera.
+- @apply pozwala szybko ustawić globalne style zgodne z designem (kolory tła/tekstu/linków).
+- Trzymanie minimalnych globali w tym pliku ułatwia porządek i wykorzystuje preflight Tailwinda. */

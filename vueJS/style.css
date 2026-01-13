@@ -1,0 +1,18 @@
+/* Globalne style (opcjonalne) dla Vue */
+body {
+  font-family: system-ui, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ---
+Dlaczego tak:
+- Minimalny globalny reset/styl ułatwia czytelność przykładu bez dodatkowych frameworków.
+- Neutralna typografia/tło pozwalają skupić się na logice komponentów Vue.
+- Lista bez bulletów dobrze pasuje do komponentu UserCard z własnym borderem. */

@@ -1,0 +1,37 @@
+// Główny build.gradle (root) – szkic z komentarzami.
+// W realnym projekcie RN generuje te pliki; tu edukacyjny przykład.
+buildscript {
+    ext {                                                  // zmienne globalne
+        buildToolsVersion = "34.0.0"                       // wersja Build Tools
+        minSdkVersion = 23                                 // minimalne SDK Android
+        compileSdkVersion = 34                             // docelowe SDK
+        targetSdkVersion = 34                              // target SDK
+        kotlinVersion = "1.9.10"                           // Kotlin dla pluginu
+        // reactNativeDir = "../../node_modules/react-native" // przykład
+    }
+    repositories {
+        google()                                           // repo Google
+        mavenCentral()                                     // Maven Central
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.1.4")   // plugin Android Gradle
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}") // plugin Kotlin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir                            // task clean usuwa buildDir
+}
+
+// ---
+// Dlaczego tak:
+// - Sekcja buildscript definiuje wspólne wersje SDK/BuildTools/Kotlin dla całego projektu.
+// - Repos google/mavenCentral są standardem dla zależności Androida i RN.
+// - Task clean pozwala łatwo usunąć artefakty build, co pomaga przy problemach z cache/konfiguracją.

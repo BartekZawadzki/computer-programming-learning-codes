@@ -1,0 +1,47 @@
+/* Design tokens: kolory, spacing, fonty, promienie, cienie */
+
+:root {
+  /* Kolory podstawowe */
+  --color-primary: #0d6efd; /* kolor główny */
+  --color-primary-dark: #0b5ed7; /* ciemniejszy akcent */
+  --color-success: #16a34a; /* sukces */
+  --color-warning: #f59e0b; /* ostrzeżenie */
+  --color-danger: #ef4444; /* błąd */
+  --color-muted: #64748b; /* przygaszony tekst */
+  --color-text: #0f172a; /* tekst bazowy */
+  --color-bg: #f8fafc; /* tło strony */
+  --color-card: #ffffff; /* tło kart/paneli */
+  --color-border: #e2e8f0; /* ramki */
+
+  /* Skala odstępów (rem) */
+  --space-0: 0;
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.5rem; /* 24px */
+  --space-6: 2rem; /* 32px */
+
+  /* Promienie */
+  --radius-sm: 4px; /* małe zaokrąglenie */
+  --radius-md: 8px; /* średnie zaokrąglenie */
+  --radius-lg: 12px; /* duże zaokrąglenie */
+  --radius-full: 9999px; /* pełne zaokrąglenie */
+
+  /* Cienie */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.08); /* lekki cień */
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.12); /* średni cień */
+  --shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.18); /* mocniejszy cień */
+
+  /* Typografia */
+  --font-base: 16px; /* bazowy rozmiar */
+  --font-family: "Inter", Arial, sans-serif; /* rodzina fontów */
+  --line-height: 1.6; /* bazowy line-height */
+}
+
+/* ---
+Dlaczego tak:
+- Zdefiniowane tokeny (kolory, spacing, radius, cienie, typografia) standaryzują wygląd w całym projekcie.
+- Skala odstępów w rem pozwala łatwo przeliczać na px i utrzymuje responsywną typografię.
+- Promienie/cienie jako zmienne ułatwiają spójność komponentów bez powtarzania wartości magicznych.
+- Bazowe font/line-height w jednym miejscu sprzyjają konsekwentnej typografii. */

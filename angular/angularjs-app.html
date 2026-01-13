@@ -1,0 +1,33 @@
+<!-- AngularJS 1.x przykład: moduł, controller, binding, ng-repeat, ng-click. -->
+<!doctype html>
+<html lang="pl" ng-app="legacyApp">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="./angularjs-app.js"></script> <!-- logika kontrolera -->
+</head>
+<body ng-controller="MainCtrl as vm">
+  <h1>{{ vm.title }}</h1>
+  <p>Przykład AngularJS 1.x – binding i lista użytkowników.</p>
+
+  <form ng-submit="vm.addUser()">
+    <input type="text" ng-model="vm.newName" placeholder="Imię" required>
+    <input type="email" ng-model="vm.newEmail" placeholder="Email" required>
+    <button type="submit">Dodaj</button>
+  </form>
+
+  <ul>
+    <li ng-repeat="u in vm.users track by u.id">
+      <strong>{{ u.name }}</strong> – {{ u.email }}
+      <button ng-click="vm.remove(u.id)">Usuń</button>
+    </li>
+  </ul>
+</body>
+</html>
+
+<!-- ---
+Dlaczego tak:
+- ng-app/ng-controller demonstrują podstawowy setup AngularJS 1.x z kontrolerem jako alias (vm).
+- ng-model/ng-submit/ng-repeat/ng-click pokazują dwukierunkowy binding i reakcję na akcje użytkownika.
+- Minimalny markup pozwala skupić się na mechanice AngularJS bez dodatkowych bibliotek UI. -->

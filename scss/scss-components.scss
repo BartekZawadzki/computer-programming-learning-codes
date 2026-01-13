@@ -1,0 +1,62 @@
+@import "./scss-tokens.scss"; // zmienne
+@import "./scss-mixins.scss"; // mixiny
+
+// Badge (etykieta)
+.badge {
+  display: inline-flex; // wyrównanie
+  align-items: center; // środek pionowy
+  padding: $space-1 $space-2; // odstęp
+  border-radius: $radius-full; // pełne zaokrąglenie
+  font-weight: 600; // waga czcionki
+  background: lighten($color-border, 6%); // domyślne tło
+  color: $color-text; // domyślny tekst
+}
+.badge-primary { background: $color-primary; color: #fff; } // wariant primary
+.badge-success { background: $color-success; color: #fff; } // wariant success
+.badge-warning { background: $color-warning; color: #0f172a; } // wariant warning
+
+// Alert
+.alert {
+  border-radius: $radius-md; // zaokrąglenie
+  padding: $space-3 $space-4; // odstęp
+  border: 1px solid $color-border; // ramka
+  background: $color-card; // tło
+  color: $color-text; // tekst
+  @include shadow(sm); // lekki cień
+}
+.alert-info { border-color: #0ea5e9; background: #e0f2fe; } // wariant info
+.alert-success { border-color: $color-success; background: #dcfce7; } // wariant success
+.alert-warning { border-color: $color-warning; background: #fef3c7; } // wariant warning
+.alert-danger { border-color: $color-danger; background: #fee2e2; } // wariant danger
+
+// Chip (mały tag z możliwością usuwania)
+.chip {
+  display: inline-flex; // układ inline
+  align-items: center; // wyrównanie
+  gap: $space-2; // odstęp
+  padding: $space-1 $space-2; // wypełnienie
+  border: 1px solid $color-border; // ramka
+  border-radius: $radius-full; // pełne zaokrąglenie
+  background: $color-card; // tło
+  color: $color-text; // tekst
+}
+.chip .remove {
+  cursor: pointer; // kursor ręki
+  color: $color-muted; // przygaszony kolor ikony
+}
+
+// Panel (karta)
+.panel {
+  background: $color-card; // tło panelu
+  border: 1px solid $color-border; // ramka
+  border-radius: $radius-lg; // zaokrąglenie
+  padding: $space-4; // odstęp
+  @include shadow(md); // cień średni
+}
+
+// ---
+// Dlaczego tak:
+// - Wspiera tokeny/mixiny SCSS, więc wszystkie komponenty dziedziczą spójne kolory, odstępy i cienie.
+// - Badge/Chip są inline-flex dla łatwego wyrównania treści i używają radius-full dla kompaktowego wyglądu.
+// - Alert ma jedną bazę i warianty kolorystyczne, co upraszcza rozszerzanie bez duplikacji stylów.
+// - Panel korzysta z mixina shadow(md) oraz radius-lg, dzięki czemu wygląda jak wyraźna karta/kafelek. 

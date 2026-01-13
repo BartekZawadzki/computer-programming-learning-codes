@@ -1,0 +1,82 @@
+/* Kontener centralny */
+.container {
+  max-width: 1200px; /* szerokość maksymalna */
+  margin: 0 auto; /* centrowanie w poziomie */
+  padding: 0 16px; /* odstępy wewnętrzne */
+}
+
+/* Flex helpers */
+.flex {
+  display: flex; /* aktywuje flexbox */
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row; /* kierunek wiersz */
+  gap: 12px; /* odstęp między elementami */
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column; /* kierunek kolumna */
+  gap: 12px;
+}
+
+.justify-between {
+  justify-content: space-between; /* rozstaw na boki */
+}
+
+.align-center {
+  align-items: center; /* wyśrodkowanie w osi poprzecznej */
+}
+
+/* Grid helpers */
+.grid {
+  display: grid; /* aktywuje grid */
+  gap: 12px; /* odstęp siatki */
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 kolumny */
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 kolumny */
+}
+
+.grid-auto {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* responsywne kolumny */
+}
+
+/* Karty/panele */
+.card {
+  background: #fff; /* tło panelu */
+  border: 1px solid #e2e8f0; /* obramowanie */
+  border-radius: 8px; /* zaokrąglenie rogów */
+  padding: 16px; /* wewnętrzny odstęp */
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08); /* subtelny cień */
+}
+
+.card h3 {
+  margin: 0 0 8px 0; /* odstęp nagłówka karty */
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* pionowy odstęp */
+}
+
+/* Utility spacing */
+.mt-0 { margin-top: 0; } /* zerowy margines top */
+.mt-12 { margin-top: 12px; } /* 12px od góry */
+.mb-12 { margin-bottom: 12px; } /* 12px od dołu */
+.py-16 { padding-top: 16px; padding-bottom: 16px; } /* pionowy padding */
+.px-16 { padding-left: 16px; padding-right: 16px; } /* poziomy padding */
+
+/* ---
+Dlaczego tak:
+- Utility klas dla flex/grid i spacing przyspieszają budowę layoutów bez pisania nowych reguł.
+- .container z max-width/margin/padding zapewnia responsywne centrowanie zawartości.
+- Karty mają tło, border i lekki cień dla czytelnej separacji sekcji.
+- grid-auto i flex helpers pozwalają szybko zmieniać układ (2/3 kolumny, auto-fit) bez osobnych komponentów. */

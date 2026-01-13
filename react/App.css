@@ -1,0 +1,50 @@
+/* Prosty styl dla przykładowej aplikacji React */
+body {
+  font-family: system-ui, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.app {
+  max-width: 800px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.counter {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e2e8f0;
+}
+
+.error {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+/* ---
+Dlaczego tak:
+- Prosty, neutralny design (card, border, shadow) ułatwia podgląd komponentów bez zewnętrznego UI frameworka.
+- Reset i layout w jednym pliku CSS utrzymują przykład lekki i czytelny.
+- Styl .error wyróżnia komunikaty błędów w sekcji fetch. */

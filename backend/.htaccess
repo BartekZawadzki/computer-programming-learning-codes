@@ -1,0 +1,35 @@
+# Przykładowy .htaccess z komentarzami (dla DocumentRoot z AllowOverride All).
+
+# Wymuszanie HTTPS (odkomentuj, jeśli masz certy na 443)
+# RewriteEngine On
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Ustawienie strony domyślnej
+DirectoryIndex index.html index.php
+
+# Kompresja gzip (jeśli mod_deflate włączony)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json
+</IfModule>
+
+# Cache statyków (jeśli mod_expires włączony)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+</IfModule>
+
+# Blok dostępu do ukrytych plików
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ---
+# Dlaczego tak:
+# - DirectoryIndex ustawia listę startowych plików dla katalogu (HTML/PHP).
+# - Kompresja gzip i cache statyków przyspieszają ładowanie, jeśli moduły Apache są dostępne.
+# - Sekcja HTTPS (zakomentowana) pokazuje typowe przekierowanie na TLS, gdy certyfikat jest skonfigurowany.
+# - Blokada ukrytych plików chroni przed przypadkowym ujawnieniem konfiguracji (np. .env, .git). 

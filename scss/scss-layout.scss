@@ -1,0 +1,44 @@
+@import "./scss-tokens.scss"; // zmienne
+@import "./scss-mixins.scss"; // mixiny
+
+// Kontener centralny
+.container {
+  max-width: 1200px; // szerokość maksymalna
+  margin: 0 auto; // centrowanie
+  padding: 0 $space-4; // odstępy boczne
+}
+
+// Flex helpery
+.flex { display: flex; } // aktywuje flex
+.flex-row { @extend .flex; flex-direction: row; gap: $space-3; } // wiersz
+.flex-col { @extend .flex; flex-direction: column; gap: $space-3; } // kolumna
+.justify-between { justify-content: space-between; } // rozstaw
+.align-center { align-items: center; } // środek w osi poprzecznej
+
+// Grid helpery
+.grid { display: grid; gap: $space-3; } // baza gridu
+.grid-2 { @extend .grid; grid-template-columns: repeat(2, minmax(0, 1fr)); } // 2 kolumny
+.grid-3 { @extend .grid; grid-template-columns: repeat(3, minmax(0, 1fr)); } // 3 kolumny
+.grid-auto { @extend .grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } // responsywny grid
+
+// Karty / panele
+.card {
+  background: $color-card; // tło
+  border: 1px solid $color-border; // ramka
+  border-radius: $radius-md; // zaokrąglenie
+  padding: $space-4; // odstęp
+  @include shadow(sm); // cień lekki
+  h3 { margin: 0 0 $space-2 0; } // odstęp pod nagłówkiem
+}
+
+// Utility spacing
+.mt-0 { margin-top: 0; } // zero górnego marginesu
+.mt-3 { margin-top: $space-3; } // margines top 12px
+.mb-3 { margin-bottom: $space-3; } // margines bottom 12px
+.py-4 { padding-top: $space-4; padding-bottom: $space-4; } // pionowy padding 16px
+.px-4 { padding-left: $space-4; padding-right: $space-4; } // poziomy padding 16px
+
+// Responsywność: przykład przełączenia na jedną kolumnę
+@include respond(tablet) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; } // jedna kolumna na tablet
+}
