@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Grid</title>
+  <style>
+    :root {
+      --max: 1100px;
+      --gap: 1rem;
+      --bg: #0b1120;
+      --panel: #0f172a;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #22c55e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: var(--gap);
+      line-height: 1.6;
+    }
+    .shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      gap: var(--gap);
+      grid-template-rows: auto 1fr;
+    }
+    header {
+      padding: 1.5rem var(--gap);
+      background: var(--panel);
+      border-radius: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--gap);
+    }
+    header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+    header input {
+      background: #111827;
+      border: 1px solid #1f2937;
+      color: var(--text);
+      padding: 0.65rem 0.9rem;
+      border-radius: 10px;
+      min-width: 220px;
+    }
+    main {
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    article {
+      background: var(--panel);
+      border-radius: 12px;
+      border: 1px solid #1e293b;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 260px;
+    }
+    .thumb {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+      background: #1f2937;
+    }
+    .content {
+      padding: 1rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .footer {
+      padding: 0.75rem 1rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tag {
+      padding: 0.35rem 0.6rem;
+      background: #152238;
+      color: var(--accent);
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+    .btn {
+      color: #fff;
+      background: var(--accent);
+      border-radius: 10px;
+      padding: 0.55rem 0.9rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 120ms ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <h1>Blog / magazyn (grid auto-fit)</h1>
+      <input type="search" placeholder="Szukaj artykułów..." />
+    </header>
+
+    <main>
+      <article>
+        <img class="thumb" src="https://via.placeholder.com/600x360.png?text=Art1" alt="Art 1" />
+        <div class="content">
+          <div class="meta">12 sty 2026 • 6 min</div>
+          <h3>Przewodnik po CSS Grid</h3>
+          <p>Jak budować responsywne siatki w kilku linijkach.</p>
+        </div>
+        <div class="footer">
+          <span class="tag">CSS</span>
+          <a class="btn" href="#">Czytaj</a>
+        </div>
+      </article>
+
+      <article>
+        <img class="thumb" src="https://via.placeholder.com/600x360.png?text=Art2" alt="Art 2" />
+        <div class="content">
+          <div class="meta">10 sty 2026 • 4 min</div>
+          <h3>Asynchroniczność w JS</h3>
+          <p>fetch, async/await, retry z backoff i timeout.</p>
+        </div>
+        <div class="footer">
+          <span class="tag">JS</span>
+          <a class="btn" href="#">Czytaj</a>
+        </div>
+      </article>
+
+      <article>
+        <img class="thumb" src="https://via.placeholder.com/600x360.png?text=Art3" alt="Art 3" />
+        <div class="content">
+          <div class="meta">8 sty 2026 • 5 min</div>
+          <h3>Komponenty UI</h3>
+          <p>Reusable karty, przyciski, badge w prostym CSS.</p>
+        </div>
+        <div class="footer">
+          <span class="tag">UI</span>
+          <a class="btn" href="#">Czytaj</a>
+        </div>
+      </article>
+
+      <article>
+        <img class="thumb" src="https://via.placeholder.com/600x360.png?text=Art4" alt="Art 4" />
+        <div class="content">
+          <div class="meta">5 sty 2026 • 7 min</div>
+          <h3>Performance frontendu</h3>
+          <p>Reflow vs repaint, batching zmian, rAF, throttle/debounce.</p>
+        </div>
+        <div class="footer">
+          <span class="tag">Perf</span>
+          <a class="btn" href="#">Czytaj</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

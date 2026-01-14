@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecommerce Grid</title>
+  <style>
+    :root {
+      --max: 1200px;
+      --gap: 1rem;
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #22c55e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: var(--gap);
+      line-height: 1.5;
+    }
+    .shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: 260px 1fr;
+    }
+    @media (max-width: 920px) {
+      .shell { grid-template-columns: 1fr; }
+    }
+    aside {
+      background: var(--panel);
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      padding: 1rem;
+      display: grid;
+      gap: 0.5rem;
+      height: fit-content;
+    }
+    aside h3 { margin-bottom: 0.5rem; }
+    aside label { display: block; margin: 0.3rem 0; color: var(--muted); }
+    main {
+      display: grid;
+      gap: var(--gap);
+      grid-template-rows: auto 1fr;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--gap);
+      background: var(--panel);
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      padding: 1rem;
+      flex-wrap: wrap;
+    }
+    .products {
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .product {
+      background: var(--panel);
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+      background: #1f2937;
+    }
+    .product .content { padding: 0.9rem; display: grid; gap: 0.4rem; }
+    .price { color: var(--accent); font-weight: 700; }
+    .muted { color: var(--muted); }
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.65rem;
+      display: block;
+      text-align: center;
+      border-radius: 0 0 12px 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <h3>Filtry</h3>
+      <label><input type="checkbox" /> Promocje</label>
+      <label><input type="checkbox" /> Darmowa dostawa</label>
+      <label><input type="checkbox" /> Nowości</label>
+      <h3>Kategorie</h3>
+      <label><input type="checkbox" /> Elektronika</label>
+      <label><input type="checkbox" /> Moda</label>
+      <label><input type="checkbox" /> Dom</label>
+    </aside>
+
+    <main>
+      <div class="toolbar">
+        <div>
+          <h2>Sklep (grid auto-fit)</h2>
+          <p class="muted">Kafelki produktów składają się responsywnie.</p>
+        </div>
+        <select style="background:#111827;border:1px solid #1f2937;color:var(--text);padding:0.55rem;border-radius:10px;">
+          <option>Sortuj: popularność</option>
+          <option>Sortuj: cena rosnąco</option>
+          <option>Sortuj: cena malejąco</option>
+        </select>
+      </div>
+
+      <div class="products">
+        <article class="product">
+          <img src="https://via.placeholder.com/600x400.png?text=Prod1" alt="Prod1">
+          <div class="content">
+            <strong>Słuchawki Pro</strong>
+            <div class="muted">ANC, BT 5.2, 40h</div>
+            <div class="price">449 zł</div>
+          </div>
+          <a class="btn" href="#">Dodaj do koszyka</a>
+        </article>
+        <article class="product">
+          <img src="https://via.placeholder.com/600x400.png?text=Prod2" alt="Prod2">
+          <div class="content">
+            <strong>Smartwatch X</strong>
+            <div class="muted">GPS, HR, NFC</div>
+            <div class="price">799 zł</div>
+          </div>
+          <a class="btn" href="#">Dodaj do koszyka</a>
+        </article>
+        <article class="product">
+          <img src="https://via.placeholder.com/600x400.png?text=Prod3" alt="Prod3">
+          <div class="content">
+            <strong>Torba miejska</strong>
+            <div class="muted">Wodoodporna, 18L</div>
+            <div class="price">189 zł</div>
+          </div>
+          <a class="btn" href="#">Dodaj do koszyka</a>
+        </article>
+        <article class="product">
+          <img src="https://via.placeholder.com/600x400.png?text=Prod4" alt="Prod4">
+          <div class="content">
+            <strong>Klawiatura mech.</strong>
+            <div class="muted">Hot-swap, RGB</div>
+            <div class="price">399 zł</div>
+          </div>
+          <a class="btn" href="#">Dodaj do koszyka</a>
+        </article>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

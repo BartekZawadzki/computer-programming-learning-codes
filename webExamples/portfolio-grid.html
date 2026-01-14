@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Grid</title>
+  <style>
+    :root {
+      --max: 1100px;
+      --gap: 1rem;
+      --bg: #0d1117;
+      --panel: #0f1624;
+      --text: #e6edf3;
+      --muted: #a0acc0;
+      --accent: #f97316;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: var(--gap);
+      line-height: 1.6;
+    }
+    .shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      gap: var(--gap);
+      grid-template-rows: auto auto 1fr;
+    }
+    header {
+      background: var(--panel);
+      border: 1px solid #1c2435;
+      border-radius: 14px;
+      padding: 1.3rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+    header h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+    header p { color: var(--muted); }
+    .filters {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .pill {
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      background: #111a2b;
+      border: 1px solid #1c2435;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .projects {
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid #1c2435;
+      border-radius: 12px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+    .thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+      background: #1f2937;
+    }
+    .content {
+      padding: 1rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .taglist { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tag {
+      padding: 0.35rem 0.55rem;
+      border-radius: 8px;
+      background: #111a2b;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .footer {
+      padding: 0.9rem 1rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn {
+      padding: 0.55rem 0.9rem;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .muted { color: var(--muted); font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <h1>Portfolio (grid auto-fit)</h1>
+      <p>Galeria projektów z tagami technologii, responsywna.</p>
+      <div class="filters">
+        <span class="pill">Wszystko</span>
+        <span class="pill">Frontend</span>
+        <span class="pill">Backend</span>
+        <span class="pill">Fullstack</span>
+      </div>
+    </header>
+
+    <section class="projects">
+      <article class="card">
+        <img class="thumb" src="https://via.placeholder.com/640x400.png?text=Proj1" alt="Proj1">
+        <div class="content">
+          <h3>Projekt A</h3>
+          <p class="muted">Aplikacja SPA na React + API.</p>
+          <div class="taglist">
+            <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">API</span>
+          </div>
+        </div>
+        <div class="footer">
+          <a class="btn" href="#">Podgląd</a>
+          <a class="muted" href="#">Repo</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="https://via.placeholder.com/640x400.png?text=Proj2" alt="Proj2">
+        <div class="content">
+          <h3>Projekt B</h3>
+          <p class="muted">Panel admin (Next.js + Tailwind).</p>
+          <div class="taglist">
+            <span class="tag">Next.js</span><span class="tag">Tailwind</span>
+          </div>
+        </div>
+        <div class="footer">
+          <a class="btn" href="#">Podgląd</a>
+          <a class="muted" href="#">Repo</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="https://via.placeholder.com/640x400.png?text=Proj3" alt="Proj3">
+        <div class="content">
+          <h3>Projekt C</h3>
+          <p class="muted">API + baza (Node/Express + Postgres).</p>
+          <div class="taglist">
+            <span class="tag">Node</span><span class="tag">Express</span><span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="footer">
+          <a class="btn" href="#">Podgląd</a>
+          <a class="muted" href="#">Repo</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="https://via.placeholder.com/640x400.png?text=Proj4" alt="Proj4">
+        <div class="content">
+          <h3>Projekt D</h3>
+          <p class="muted">Landing + animacje (GSAP).</p>
+          <div class="taglist">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">GSAP</span>
+          </div>
+        </div>
+        <div class="footer">
+          <a class="btn" href="#">Podgląd</a>
+          <a class="muted" href="#">Repo</a>
+        </div>
+      </article>
+    </section>
+  </div>
+</body>
+</html>
