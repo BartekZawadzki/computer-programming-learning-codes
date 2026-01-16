@@ -14,6 +14,7 @@ Poniżej lista elementów w katalogu głównym `ProgramowanieWiedza` z krótkimi
 ## Katalogi i kluczowe pliki
 - [angular/](angular/) — przykładowa aplikacja Angular; główne pliki: `main.ts`, `app.module.ts`, komponent `app.component.*`, routing `app-routing.module.ts`, serwis `app.service.ts`.
 - [api/](api/) — szkic API (Node/Express): `api-server.js`, `api-routes.js`, `api-validation.js`, `api-error.js`, README.
+- [programowanieAPI/](programowanieAPI/) — kompletny przewodnik po tworzeniu i wykorzystywaniu API: `programowanieAPI.md` (teoria, przykłady, najlepsze praktyki), `programowanieAPI.js` (praktyczne przykłady z pełnymi komentarzami krok po kroku).
 - [backend/](backend/) — konfiguracje serwerów (Apache/Nginx), Next.js config oraz przykładowe endpointy API.
 - [csharp/](csharp/) — 5 przykładów w C# (tematy: podstawy/OOP/patterns/tests itp.).
 - [css/](css/) — zestaw arkuszy CSS (layout, animacje, tokeny, utility, dark mode itp.).
@@ -51,6 +52,6 @@ Poniżej lista elementów w katalogu głównym `ProgramowanieWiedza` z krótkimi
 
 ## Jak nawigować
 - Frontend: start od [frontend/](frontend/) (Bootstrap/Tailwind przykłady) lub [react/](react/) / [vueJS/](vueJS/) / [angular/](angular/) / [nextJS/](nextJS/).
-- Backend/API: szkic w [api/](api/) oraz konfiguracje w [backend/](backend/).
+- Backend/API: kompletny przewodnik w [programowanieAPI/](programowanieAPI/), szkic w [api/](api/) oraz konfiguracje w [backend/](backend/).
 - Zadania/edukacja: skup się na `javascript/zadaniaJS/` oraz katalogach językowych (`csharp/`, `php/`, `python/`, `java/`, `typescript/`, `sql/`).
 

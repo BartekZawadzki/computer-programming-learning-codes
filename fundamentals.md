@@ -1041,4 +1041,567 @@ Kompletny przewodnik po wszystkich znakach, operatorach, elementach składniowyc
 
 ---
 
+## Łączenie elementów fundamentals – Praktyczne przykłady
+
+Ta sekcja pokazuje, jak łączyć różne elementy fundamentals w praktyczne, działające przykłady kodu. Każdy przykład demonstruje użycie wielu podstawowych elementów składniowych razem.
+
+---
+
+### 1. Generowanie liczby losowej
+
+**Cel:** Wygenerować losową liczbę z określonego zakresu.
+
+**Używane elementy:**
+- `Math.random()` – funkcja generująca losową liczbę z zakresu [0, 1)
+- Operatory arytmetyczne: `*` (mnożenie), `+` (dodawanie), `Math.floor()` (zaokrąglenie w dół)
+- Operator przypisania: `=`
+- Template literals: `` `${}` ``
+
+**Przykłady:**
+
+```javascript
+// Losowa liczba z zakresu 0-9
+const randomNumber1 = Math.floor(Math.random() * 10);
+console.log(`Losowa liczba (0-9): ${randomNumber1}`);
+
+// Losowa liczba z zakresu 1-100
+const randomNumber2 = Math.floor(Math.random() * 100) + 1;
+console.log(`Losowa liczba (1-100): ${randomNumber2}`);
+
+// Losowa liczba z zakresu min-max (funkcja)
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const random = getRandomNumber(10, 50);
+console.log(`Losowa liczba (10-50): ${random}`);
+```
+
+**Wyjaśnienie:**
+- `Math.random()` zwraca liczbę z zakresu [0, 1)
+- Mnożenie przez `10` daje zakres [0, 10)
+- `Math.floor()` zaokrągla w dół do liczby całkowitej
+- Dodanie `+ 1` przesuwa zakres do [1, 100]
+
+---
+
+### 2. Zakres liczb całkowitych (int)
+
+**Cel:** Pracować z zakresami liczb całkowitych, iterować po nich, sprawdzać przynależność.
+
+**Używane elementy:**
+- Pętle: `for`, `while`
+- Operatory porównania: `<`, `<=`, `>=`, `>`
+- Operatory arytmetyczne: `++`, `--`, `+`, `-`
+- Operatory logiczne: `&&`, `||`
+- Tablice: `[]`, `.push()`, `.length`
+
+**Przykłady:**
+
+```javascript
+// Iteracja po zakresie 0-10
+for (let i = 0; i <= 10; i++) {
+  console.log(i);
+}
+
+// Iteracja po zakresie 5-15
+for (let i = 5; i <= 15; i++) {
+  console.log(`Liczba: ${i}`);
+}
+
+// Tworzenie tablicy z zakresem liczb
+function createRange(start, end) {
+  const range = [];
+  for (let i = start; i <= end; i++) {
+    range.push(i);
+  }
+  return range;
+}
+
+const numbers = createRange(1, 10);
+console.log(numbers); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// Sprawdzanie, czy liczba jest w zakresie
+function isInRange(value, min, max) {
+  return value >= min && value <= max;
+}
+
+console.log(isInRange(5, 1, 10));  // true
+console.log(isInRange(15, 1, 10)); // false
+
+// Iteracja wstecz (od większej do mniejszej)
+for (let i = 10; i >= 0; i--) {
+  console.log(i);
+}
+
+// Zakres z krokiem (co 2, co 3, itp.)
+for (let i = 0; i <= 20; i += 2) {
+  console.log(i); // 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20
+}
+```
+
+**Wyjaśnienie:**
+- `for (let i = start; i <= end; i++)` – standardowa pętla iterująca po zakresie
+- `i++` zwiększa licznik o 1 w każdej iteracji
+- `i--` zmniejsza licznik (iteracja wstecz)
+- `i += 2` zwiększa licznik o 2 (krok)
+- `value >= min && value <= max` – sprawdza przynależność do zakresu
+
+---
+
+### 3. Wypisywanie liter ze stringów
+
+**Cel:** Iterować po stringu, wyświetlać każdą literę osobno, analizować znaki.
+
+**Używane elementy:**
+- Pętle: `for`, `for...of`
+- Operator dostępu: `[]` (indeksowanie)
+- Właściwość: `.length`
+- Template literals: `` `${}` ``
+- Metody stringów: `.charAt()`, `.split()`
+
+**Przykłady:**
+
+```javascript
+const text = "Hello World";
+
+// Metoda 1: Pętla for z indeksowaniem
+for (let i = 0; i < text.length; i++) {
+  console.log(`Litera ${i}: ${text[i]}`);
+}
+
+// Metoda 2: Pętla for...of (iteracja po wartościach)
+for (const letter of text) {
+  console.log(letter);
+}
+
+// Metoda 3: Użycie .charAt()
+for (let i = 0; i < text.length; i++) {
+  console.log(text.charAt(i));
+}
+
+// Metoda 4: Konwersja do tablicy i iteracja
+const letters = text.split('');
+letters.forEach((letter, index) => {
+  console.log(`Pozycja ${index}: ${letter}`);
+});
+
+// Wypisywanie tylko liter (pomijanie spacji)
+for (const letter of text) {
+  if (letter !== ' ') {
+    console.log(letter);
+  }
+}
+
+// Wypisywanie liter z informacją o pozycji
+for (let i = 0; i < text.length; i++) {
+  console.log(`Pozycja ${i}: "${text[i]}"`);
+}
+```
+
+**Wyjaśnienie:**
+- `text.length` zwraca długość stringa
+- `text[i]` lub `text.charAt(i)` zwraca znak na pozycji `i`
+- `for...of` iteruje bezpośrednio po znakach (nie wymaga indeksu)
+- `.split('')` konwertuje string na tablicę znaków
+- Warunek `letter !== ' '` pomija spacje
+
+---
+
+### 4. Liczenie liter w stringach
+
+**Cel:** Policzyć liczbę liter, znaków, słów w stringu, analizować częstotliwość.
+
+**Używane elementy:**
+- Właściwość: `.length`
+- Pętle: `for`, `for...of`
+- Operatory arytmetyczne: `++`, `+=`
+- Operatory porównania: `===`, `!==`
+- Obiekty: `{}` (do zliczania)
+- Operator dostępu: `[]`, `.`
+
+**Przykłady:**
+
+```javascript
+const text = "Hello World";
+
+// Podstawowa długość stringa
+const totalLength = text.length;
+console.log(`Długość stringa: ${totalLength}`); // 11
+
+// Liczenie liter (bez spacji)
+let letterCount = 0;
+for (const char of text) {
+  if (char !== ' ') {
+    letterCount++;
+  }
+}
+console.log(`Liczba liter (bez spacji): ${letterCount}`); // 10
+
+// Liczenie konkretnej litery
+function countLetter(text, letter) {
+  let count = 0;
+  for (const char of text) {
+    if (char.toLowerCase() === letter.toLowerCase()) {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(`Liczba 'l': ${countLetter(text, 'l')}`); // 3
+
+// Liczenie wszystkich liter (częstotliwość)
+function countAllLetters(text) {
+  const frequency = {};
+  
+  for (const char of text.toLowerCase()) {
+    if (char !== ' ') {
+      // Jeśli litera już istnieje, zwiększ licznik
+      if (frequency[char]) {
+        frequency[char]++;
+      } else {
+        // Jeśli litera nie istnieje, utwórz nowy wpis
+        frequency[char] = 1;
+      }
+    }
+  }
+  
+  return frequency;
+}
+
+const letterFrequency = countAllLetters(text);
+console.log(letterFrequency);
+// { h: 1, e: 1, l: 3, o: 2, w: 1, r: 1, d: 1 }
+
+// Liczenie słów
+function countWords(text) {
+  const words = text.trim().split(/\s+/);
+  return words.length;
+}
+
+console.log(`Liczba słów: ${countWords(text)}`); // 2
+
+// Liczenie samogłosek i spółgłosek
+function countVowelsAndConsonants(text) {
+  const vowels = 'aeiou';
+  let vowelCount = 0;
+  let consonantCount = 0;
+  
+  for (const char of text.toLowerCase()) {
+    if (char >= 'a' && char <= 'z') {
+      if (vowels.includes(char)) {
+        vowelCount++;
+      } else {
+        consonantCount++;
+      }
+    }
+  }
+  
+  return { vowels: vowelCount, consonants: consonantCount };
+}
+
+const counts = countVowelsAndConsonants(text);
+console.log(`Samogłoski: ${counts.vowels}, Spółgłoski: ${counts.consonants}`);
+```
+
+**Wyjaśnienie:**
+- `.length` zwraca całkowitą długość stringa
+- `letterCount++` zwiększa licznik o 1
+- `frequency[char]` – dostęp do właściwości obiektu przez dynamiczny klucz
+- `frequency[char]++` – zwiększa wartość w obiekcie
+- `.split(/\s+/)` dzieli string na słowa (regex dla białych znaków)
+- `vowels.includes(char)` sprawdza, czy znak jest w stringu samogłosek
+
+---
+
+### 5. Inne typowe przykłady łączenia elementów
+
+#### 5.1. Sprawdzanie parzystości i operacje na liczbach
+
+```javascript
+// Sprawdzanie parzystości (użycie modulo)
+function isEven(number) {
+  return number % 2 === 0;
+}
+
+console.log(isEven(4));  // true
+console.log(isEven(7));  // false
+
+// Suma liczb w zakresie
+function sumRange(start, end) {
+  let sum = 0;
+  for (let i = start; i <= end; i++) {
+    sum += i;
+  }
+  return sum;
+}
+
+console.log(sumRange(1, 10)); // 55
+
+// Silnia (factorial)
+function factorial(n) {
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+  let result = 1;
+  for (let i = 2; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+
+console.log(factorial(5)); // 120
+```
+
+**Używane elementy:**
+- Operator modulo: `%` (sprawdzanie parzystości)
+- Operator przypisania złożonego: `+=`, `*=`
+- Operatory porównania: `===`
+- Pętle: `for`
+- Warunki: `if`
+
+---
+
+#### 5.2. Operacje na tablicach i stringach
+
+```javascript
+// Odwracanie stringa
+function reverseString(text) {
+  let reversed = '';
+  for (let i = text.length - 1; i >= 0; i--) {
+    reversed += text[i];
+  }
+  return reversed;
+}
+
+console.log(reverseString("Hello")); // "olleH"
+
+// Sprawdzanie palindromu
+function isPalindrome(text) {
+  const cleaned = text.toLowerCase().replace(/\s/g, '');
+  return cleaned === reverseString(cleaned);
+}
+
+console.log(isPalindrome("racecar")); // true
+console.log(isPalindrome("hello"));   // false
+
+// Znajdowanie najdłuższego słowa
+function findLongestWord(sentence) {
+  const words = sentence.split(' ');
+  let longest = '';
+  
+  for (const word of words) {
+    if (word.length > longest.length) {
+      longest = word;
+    }
+  }
+  
+  return longest;
+}
+
+console.log(findLongestWord("The quick brown fox")); // "quick"
+```
+
+**Używane elementy:**
+- Konkatenacja: `+=`
+- Iteracja wstecz: `i--`, `i >= 0`
+- Porównanie długości: `word.length > longest.length`
+- Metody stringów: `.toLowerCase()`, `.replace()`, `.split()`
+
+---
+
+#### 5.3. Filtrowanie i transformacja danych
+
+```javascript
+// Filtrowanie liczb parzystych z tablicy
+function filterEven(numbers) {
+  const evenNumbers = [];
+  
+  for (const num of numbers) {
+    if (num % 2 === 0) {
+      evenNumbers.push(num);
+    }
+  }
+  
+  return evenNumbers;
+}
+
+console.log(filterEven([1, 2, 3, 4, 5, 6])); // [2, 4, 6]
+
+// Mapowanie (podwajanie wartości)
+function doubleNumbers(numbers) {
+  const doubled = [];
+  
+  for (const num of numbers) {
+    doubled.push(num * 2);
+  }
+  
+  return doubled;
+}
+
+console.log(doubleNumbers([1, 2, 3, 4])); // [2, 4, 6, 8]
+
+// Znajdowanie maksimum i minimum
+function findMinMax(numbers) {
+  if (numbers.length === 0) {
+    return null;
+  }
+  
+  let min = numbers[0];
+  let max = numbers[0];
+  
+  for (const num of numbers) {
+    if (num < min) {
+      min = num;
+    }
+    if (num > max) {
+      max = num;
+    }
+  }
+  
+  return { min, max };
+}
+
+console.log(findMinMax([5, 2, 9, 1, 7])); // { min: 1, max: 9 }
+```
+
+**Używane elementy:**
+- Metody tablic: `.push()`, `.length`
+- Operatory porównania: `<`, `>`, `===`
+- Operator arytmetyczny: `*` (mnożenie)
+- Destrukturyzacja obiektu: `{ min, max }`
+
+---
+
+#### 5.4. Walidacja i sprawdzanie warunków
+
+```javascript
+// Sprawdzanie, czy string zawiera tylko cyfry
+function isNumeric(text) {
+  for (const char of text) {
+    if (char < '0' || char > '9') {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(isNumeric("12345")); // true
+console.log(isNumeric("12a45")); // false
+
+// Sprawdzanie, czy string jest pusty lub zawiera tylko spacje
+function isEmpty(text) {
+  return text.trim().length === 0;
+}
+
+console.log(isEmpty(""));      // true
+console.log(isEmpty("   "));   // true
+console.log(isEmpty("hello")); // false
+
+// Sprawdzanie zakresu wieku
+function validateAge(age) {
+  if (age >= 18 && age <= 120) {
+    return "Ważny wiek";
+  } else if (age < 0) {
+    return "Wiek nie może być ujemny";
+  } else if (age < 18) {
+    return "Za młody";
+  } else {
+    return "Wiek poza zakresem";
+  }
+}
+
+console.log(validateAge(25));  // "Ważny wiek"
+console.log(validateAge(15));  // "Za młody"
+```
+
+**Używane elementy:**
+- Operatory porównania: `>=`, `<=`, `<`, `>`, `===`
+- Operatory logiczne: `&&`, `||`
+- Warunki: `if`, `else if`, `else`
+- Metody stringów: `.trim()`
+
+---
+
+#### 5.5. Formatowanie i prezentacja danych
+
+```javascript
+// Formatowanie liczby z zerami wiodącymi
+function padNumber(number, length) {
+  const str = number.toString();
+  const zeros = '0'.repeat(length - str.length);
+  return zeros + str;
+}
+
+console.log(padNumber(5, 3));    // "005"
+console.log(padNumber(42, 4));   // "0042"
+
+// Formatowanie tekstu (pierwsza litera wielka)
+function capitalize(text) {
+  if (text.length === 0) {
+    return text;
+  }
+  return text[0].toUpperCase() + text.slice(1).toLowerCase();
+}
+
+console.log(capitalize("hello"));     // "Hello"
+console.log(capitalize("WORLD"));     // "World"
+
+// Formatowanie pełnego imienia
+function formatFullName(firstName, lastName) {
+  return `${capitalize(firstName)} ${capitalize(lastName)}`;
+}
+
+console.log(formatFullName("john", "doe")); // "John Doe"
+
+// Formatowanie listy elementów
+function formatList(items) {
+  if (items.length === 0) {
+    return "Lista jest pusta";
+  }
+  
+  let result = "Lista elementów:\n";
+  for (let i = 0; i < items.length; i++) {
+    result += `${i + 1}. ${items[i]}\n`;
+  }
+  
+  return result;
+}
+
+console.log(formatList(["Jabłko", "Banan", "Pomarańcza"]));
+// Lista elementów:
+// 1. Jabłko
+// 2. Banan
+// 3. Pomarańcza
+```
+
+**Używane elementy:**
+- Template literals: `` `${}` ``, wieloliniowe stringi
+- Metody stringów: `.toString()`, `.toUpperCase()`, `.toLowerCase()`, `.slice()`, `.repeat()`
+- Konkatenacja: `+=`
+- Operator arytmetyczny: `+` (dodawanie stringów)
+
+---
+
+### Podsumowanie łączenia elementów
+
+**Kluczowe zasady:**
+
+1. **Pętle + warunki:** Używaj `for`/`while` z `if` do filtrowania i warunkowego przetwarzania
+2. **Operatory arytmetyczne + przypisania:** Łącz `+`, `-`, `*`, `/`, `%` z `+=`, `-=`, `*=`, `/=` do akumulacji wartości
+3. **Dostęp do właściwości + iteracja:** Używaj `[]`, `.length`, `.charAt()` w pętlach do przetwarzania stringów/tablic
+4. **Template literals + wyrażenia:** Wykorzystuj `` `${}` `` do formatowania wyjścia z obliczeniami
+5. **Obiekty + pętle:** Używaj `{}` z `for...in`/`for...of` do zliczania i grupowania danych
+6. **Warunki + operatory logiczne:** Łącz `if`/`else` z `&&`, `||`, `!` do złożonych warunków
+7. **Funkcje + wszystkie powyższe:** Opakowuj logikę w funkcje dla reużywalności
+
+**Ćwiczenie praktyczne:**
+Spróbuj połączyć kilka przykładów powyżej, np.:
+- Funkcja, która przyjmuje string i zwraca obiekt z liczbą liter, słów i najdłuższym słowem
+- Funkcja generująca losową liczbę i sprawdzająca, czy jest parzysta
+- Funkcja odwracająca string i sprawdzająca, czy jest palindromem
+
+---
+
 **Uwaga:** Ten przewodnik zawiera większość podstawowych i zaawansowanych elementów składniowych. Niektóre elementy mogą mieć dodatkowe zastosowania w specyficznych kontekstach (np. TypeScript, JSX, różne frameworki).
